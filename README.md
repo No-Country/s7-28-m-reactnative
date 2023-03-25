@@ -79,6 +79,14 @@ Proyecto Mobile Boton Antipanico
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
       </div>
     </td>
+     <td>
+      <div align="center">
+        <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQEjlBFCTy4Zag/profile-framedphoto-shrink_200_200/0/1674102700480?e=1680328800&v=beta&t=pYG8PwYsV9QjyNT0mn9jq2NQc65KdhHuyYXWPHeG574"/>
+        </a>
+        <h4 style="margin-top: 1rem;">Malena Hernández</h4>
+      </div>
+    </td>
   </tr>
 </table>
 
