@@ -1,41 +1,44 @@
+// En los controladores no va la logica del negocio, eso va en services
+const { findUser, updateProfile, deleteProfile, findAllUsers } = require('../services/user.services')
 const { handlerHttp } = require('../utils/error.handler')
 
-const getUser = (req, res) => {
+const getUser = async (req, res) => {
   try {
-    const { id } = req.body
-    console.log(id)
-    res.send(id)
+    const { email } = req.body
+    const resUser = await findUser(email)
+    res.status(200).send(resUser)
   } catch (error) {
-    handlerHttp(res, 'Error get user')
+    handlerHttp(res, (!error ? 'Error get user' : error.message))
   }
 }
 
-const getUsers = (req, res) => {
+const getUsers = async (req, res) => {
   try {
-    res.send('All users')
+    const resUser = await findAllUsers()
+    res.status(200).send(resUser)
   } catch (error) {
     handlerHttp(res, 'Error get users')
   }
 }
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   try {
-    const id = req.body
-    res.send(id)
+    const data = req.body
+    const updatedUser = await updateProfile(data)
+    if (updatedUser === 'User not found') { return res.status(400).send('User not found') }
+    res.status(200).send(updatedUser)
   } catch (error) {
     handlerHttp(res, 'Error update user')
   }
 }
-const createUser = (req, res) => {
-  try { res.send('User created') } catch (error) {
-    handlerHttp(res, 'Error create user')
-  }
-}
-const deleteUser = (req, res) => {
+
+const deleteUser = async (req, res) => {
   try {
-    const id = req.body
-    res.send(id)
+    const { id } = req.body
+    const resDeletedUser = await deleteProfile(id)
+    if (resDeletedUser === 'User not found') { return res.status(400).send('User not found') }
+    res.status(200).send(resDeletedUser)
   } catch (error) {
-    handlerHttp(res, 'Error delete user')
+    handlerHttp(res, (!error ? 'Error delete user' : error.message))
   }
 }
-module.exports = { getUser, getUsers, updateUser, createUser, deleteUser }
+module.exports = { getUser, getUsers, updateUser, deleteUser }
