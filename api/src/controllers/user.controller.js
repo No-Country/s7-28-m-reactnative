@@ -8,7 +8,7 @@ const getUser = async (req, res) => {
     const resUser = await findUser(email)
     res.status(200).send(resUser)
   } catch (error) {
-    handlerHttp(res, (!error ? 'Error cannot get user' : error.message))
+    handlerHttp(res, (!error ? 'Error cannot get User' : error.message))
   }
 }
 
