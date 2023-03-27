@@ -1,6 +1,6 @@
 <div align="center">
   <h1>🤖 Proyecto | No Country 💻</h1>
-  <img width="150" style="margin-bottom: 1.5rem;" src="https://scontent.frex1-1.fna.fbcdn.net/v/t39.30808-6/299186025_168808675676315_5272485203387695428_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=DGtfrJT8vIIAX9hLX-J&_nc_ht=scontent.frex1-1.fna&oh=00_AfDe1gq8cIdlImGbt2F2mQqKcPLqsjj04LHm1KPSp9sqSQ&oe=63E06E26" />
+  
 </div>
 
 ## 📕 Descripción del proyecto
@@ -77,6 +77,14 @@ Proyecto Mobile Boton Antipanico
           <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGGq-Lf7WAyhQ/profile-framedphoto-shrink_400_400/0/1663895212481?e=1680040800&v=beta&t=OpAAgxsA1UKZXuDkfctXyKqWGLKFAO_JSo2TK4V3VKU"/>
         </a>
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
+      </div>
+    </td>
+     <td>
+      <div align="center">
+        <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQEjlBFCTy4Zag/profile-framedphoto-shrink_200_200/0/1674102700480?e=1680328800&v=beta&t=pYG8PwYsV9QjyNT0mn9jq2NQc65KdhHuyYXWPHeG574"/>
+        </a>
+        <h4 style="margin-top: 1rem;">Malena Hernández</h4>
       </div>
     </td>
   </tr>
