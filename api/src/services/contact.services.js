@@ -1,5 +1,17 @@
 const UserModel = require('../models/user.model')
 
+const getUserContacts = async (userId) => {
+  try {
+    const user = await UserModel.findById(userId).populate({
+      path: 'contacts',
+      select: '-password -contacts'
+    })
+    if (!user) { throw new Error('User not found') }
+    return user.contacts
+  } catch (error) {
+    return error.message
+  }
+}
 const addContact = async (userId, newContactId) => {
   try {
     const user = await UserModel.findById(userId)
@@ -27,4 +39,4 @@ const deleteContact = async (userId, newContactId) => {
   }
 }
 
-module.exports = { addContact, deleteContact }
+module.exports = { addContact, deleteContact, getUserContacts }
