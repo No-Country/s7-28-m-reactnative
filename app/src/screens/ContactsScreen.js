@@ -20,7 +20,7 @@ const ContactsScreen = () => {
             Agregar Contactos
           </Text>
         </View>
-        <TouchableOpacity onPress={() => { Alert.alert('Agregar Contacto!') }} className='bg-gray-200 rounded-full border border-4 border-appgreen p-5 m-5 mt-20 h-60 w-60 justify-center items-center'>
+        <TouchableOpacity onPress={() => { Alert.alert('Agregar Contacto!') }} className='bg-gray-200 rounded-full border border-appgreen p-5 m-5 mt-20 h-60 w-60 justify-center items-center'>
           <Ionicons
             name='add-outline'
             size={100}
