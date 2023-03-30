@@ -7,7 +7,7 @@ module.exports = {
     colors: {
       appred: '#C83D3D',
       appblue: '#4994C2',
-      appbluelight: '#7488C0',
+      appbluelight: '#E4EEF5',
       appgray: '#E0E0E0',
       applightgray: '#F4F4F4',
       appgreen: '#72B040',
