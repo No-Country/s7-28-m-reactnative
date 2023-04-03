@@ -7,7 +7,11 @@ const checkJwt = (req, res, next) => {
     const isOk = verifyToken(jwt)
     if (!isOk) {
       res.status(401).send('INVALID_SESSION')
+    } else {
+      // setting email in body if token exists
+      req.body.userEmail = isOk.id
     }
+
     next()
   } catch (error) {
     console.log(error)
