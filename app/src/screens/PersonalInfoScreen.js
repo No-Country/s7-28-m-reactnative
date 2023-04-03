@@ -13,7 +13,10 @@ const PersonalInfoScreen = ({ navigation }) => {
     <SafeAreaView>
       <View className='w-full flex items-center h-72 justify-center bg-appbluelight'>
         <View>
-          <Image source={require('../../images/avatar.png')} className='rounded-full' />
+          <View className='rounded-full overflow-hidden w-32 h-32'>
+            <Image source={require('../../images/avatar.png')} className='object-cover' />
+          </View>
+
           <TouchableOpacity onPress={() => setChangeImage(prev => !prev)} className='absolute bottom-0 right-0 bg-appwhite p-2 rounded-full'>
             <Ionicons
               name='pencil-outline'
@@ -23,7 +26,7 @@ const PersonalInfoScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <Text className='text-xl font-bold mt-3'>Mariana Romero</Text>
-        <Text className='text-appgray mt-4'>marianar@gmail.com</Text>
+        <Text className='text-appdarkgrey mt-4'>marianar@gmail.com</Text>
       </View>
       <View className='gap-3 mt-5 px-5'>
         <View className='flex flex-row justify-between w-full px-2 border-b py-2 border-appgray'>
