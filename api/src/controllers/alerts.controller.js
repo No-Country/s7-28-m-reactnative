@@ -1,5 +1,3 @@
-// En los controladores no va la logica del negocio, eso va en services
-
 const { getAllAlert, createAlert, getOneAlert } = require('../services/alerts.services')
 
 const getAllAlertsController = async (req, res) => {
