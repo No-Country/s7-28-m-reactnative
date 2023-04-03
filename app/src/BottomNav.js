@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen'
 import ContactsScreen from './screens/ContactsScreen'
 import HowToUseScreen from './screens/HowToUseScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import PersonalInfoScreen from './screens/PersonalInfoScreen'
 
 const Tab = createBottomTabNavigator()
 
