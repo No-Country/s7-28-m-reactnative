@@ -5,8 +5,11 @@ const router = require('./routes')
 const morgan = require('morgan')
 const db = require('./config/mongo')
 const app = express()
+const swaggerUi = require('swagger-ui-express')
 
 const port = process.env.PORT || 3001
+
+app.use('/', swaggerUi.serve)
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
