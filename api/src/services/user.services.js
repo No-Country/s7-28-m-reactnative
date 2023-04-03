@@ -7,7 +7,7 @@ const findUser = async (id) => {
   return resUser
 }
 const findAllUsers = async (id) => {
-  const resUser = await UserModel.find()
+  const resUser = await UserModel.find().select('-password')
   if (!resUser) { throw new Error('User not found') }
   return resUser
 }
