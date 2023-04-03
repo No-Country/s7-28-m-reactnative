@@ -14,6 +14,7 @@ const checkJwt = (req, res, next) => {
 
     next()
   } catch (error) {
+    console.log(error)
     res.status(400).send('UNAUTHORIZED_USER')
   }
 }
