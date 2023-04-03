@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./App.{js,jsx}', './src/screens/*.{js,jsx}'],
+  content: ['./App.{js,jsx}', './src/screens/*.{js,jsx}', './src/components/**/*.jsx'],
   theme: {
     extend: {
     },
@@ -14,6 +14,7 @@ module.exports = {
       appwhite: '#FEFFFF',
       appblack: '#212121'
     }
+
   },
   plugins: []
 }
