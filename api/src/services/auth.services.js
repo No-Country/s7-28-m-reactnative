@@ -20,7 +20,6 @@ const loginUser = async ({ email, password }) => {
   const data = {
     token,
     user: checkUser
-
   }
   return data
 }
