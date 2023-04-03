@@ -8,9 +8,9 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <SafeAreaView>
       {Modal && <View className='w-full z-50 h-screen flex items-center justify-center bg-appblack bg-opacity-20 absolute top-0'>
-        <View className='w-2/3 rounded-xl p-5 z-50 h-1/3 bg-appgray flex items-center justify-between'>
-          <View className='mb-2'>
-            <Image source={require('../../images/Character.png')} />
+        <View className=' w-10 p-5 z-50 bg-appgray flex items-center justify-between'>
+          <View className='mb-2 '>
+            <Image className='rounded-full' source={require('../../images/Character.png')} />
           </View>
           <View className='flex items-center pb-6'>
             <Text className='text-xl font-semibold'>Cerrar Sesion</Text>
@@ -21,15 +21,18 @@ const ProfileScreen = ({ navigation }) => {
             <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={() => SetModal(false)}>Entendido</Text></TouchableOpacity>
           </View>
         </View>
-      </View>}
+                </View>}
       {/* Header */}
       <View className='h-16 bg-applightgray flex justify-center'>
         <Text className='w-full text-lg text-center'>Mi Perfil</Text>
       </View>
-      <View className='w-full flex items-center'>
-        <Image className='mt-3' source={require('../../images/avatar.png')} />
+      <View className=' w-full flex items-center'>
+        <View className='w-32 h-32 flex rounded-full overflow-hidden'>
+          <Image className=' object-cover ' source={require('../../images/avatar.png')} />
+        </View>
+
         <Text className='text-xl font-bold mt-2'>Mariana Romero</Text>
-        <Text className=' text-appgray mt-2'>marianar@gmail.com</Text>
+        <Text className=' text-appdarkgrey mt-2'>marianar@gmail.com</Text>
       </View>
       <View className='w-full flex items-start pl-10 mt-10'>
         <TouchableOpacity onPress={() => navigation.navigate('personalinfoscreen')} className='h-20 flex flex-row items-center gap-5 border-b w-full border-appbluelight'>
