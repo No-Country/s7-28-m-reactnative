@@ -8,8 +8,8 @@ import NotificationsOut from '../components/notifications/NotificationsOut'
 const NotificationsScreen = () => {
   const [active, setActive] = useState(1)
   const [user] = useState({
-    notificaion1: null,
-    notificaion2: null
+    notificaion1: 1,
+    notificaion2: 1
 
   })
   return (
