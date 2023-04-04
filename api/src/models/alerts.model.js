@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+
 const AlertSchema = new Schema({
   email: { type: String, required: true, unique: true },
   ubication: { type: String },

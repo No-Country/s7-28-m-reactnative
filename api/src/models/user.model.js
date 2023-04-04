@@ -3,7 +3,7 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: [true, 'Este usuario ya esta en uso'] },
   password: { type: String, required: [true, 'El campo password no puede estar vacio'] },
   phoneNumber: { type: String },
-  profileImage: { type: String },
+  profileImage: { type: String, default: '' },
   contacts: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
