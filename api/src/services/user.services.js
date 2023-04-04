@@ -11,9 +11,8 @@ const findAllUsers = async (id) => {
   if (!resUser) { throw new Error('User not found') }
   return resUser
 }
-const updateProfile = async (data) => {
-  console.log(data)
-  const resUpdatedUser = await UserModel.findOneAndUpdate({ email: data.email }, data, { new: true })
+const updateProfile = async (data, email) => {
+  const resUpdatedUser = await UserModel.findOneAndUpdate({ email }, data, { new: true })
   if (!resUpdatedUser) { return 'User not founded' }
   return resUpdatedUser
 }

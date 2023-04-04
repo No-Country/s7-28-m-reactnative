@@ -11,18 +11,7 @@ const router = Router()
  * @openapi
  * /alerts:
  *   get:
- *     requestBody:
- *       description: Objeto JSON que contiene el modo de la alerta
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               mode:
- *                 type: string
- *                 description: El modo de la alerta
- *                 example: modo1
+
  *     tags:
  *       - Alerts
  *
@@ -37,12 +26,41 @@ const router = Router()
  */
 router.get('/', checkJwt, getAllAlertsController)
 
+// * email: { type: String, required: true, unique: true },
+//   ubication: { type: String },
+//   date: { type: String },
+//   reason: { type: String }
+
 /**
  * @openapi
  * /alerts:
  *   post:
  *     tags:
  *       - Alerts
+ *     requestBody:
+ *       description: Objeto JSON que contiene el modo de la alerta
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: El modo de la alerta
+ *                 example: test@gmail.com
+ *               ubication:
+ *                  type: string
+ *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
+ *                  example: definir
+ *               date:
+ *                  type: string
+ *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
+ *                  example: definir
+ *               reason:
+ *                  type: string
+ *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
+ *                  example: definir
  *     responses:
  *       200:
  *         description: OK
@@ -66,6 +84,13 @@ router.post('/', checkJwt, createAlertController)
  *   get:
  *     tags:
  *       - Alerts
+ *     parameters:
+ *       -  in: params
+ *          name: Alert Id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: ID del alerta
  *     responses:
  *       200:
  *         description: OK

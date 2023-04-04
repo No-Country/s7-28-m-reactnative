@@ -3,7 +3,7 @@ const { registerController, loginController } = require('../controllers/auth.con
 const { newContact, removeContact, getContacts } = require('../controllers/contacts.controller')
 const { getUsers, getUser, updateUser, deleteUser } = require('../controllers/user.controller')
 const { checkJwt } = require('../middlewares/authValidateSession')
-const { logMiddleware } = require('../middlewares/log')
+// const { logMiddleware } = require('../middlewares/log')
 
 const router = Router()
 
@@ -11,23 +11,18 @@ const router = Router()
  * @openapi
  * /users:
  *   get:
- *     requestBody:
- *       description: Objeto JSON que contiene el modo de la alerta
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 description: El modo de la alerta
- *                 example: test@gmail.com
  *     tags:
  *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
- *         description: Este endpoint te devuelve un usuario
+ *         description: Este endpoint te devuelve un usuario, se debe pasar el token en headers
  *         content:
  *           application/json:
  *             schema:
@@ -41,13 +36,20 @@ const router = Router()
  *                   items:
  *                     type: object
  */
-router.get('/', logMiddleware, getUser)
+router.get('/', checkJwt, getUser)
 /**
  * @openapi
  * /users/all:
  *   get:
  *     tags:
  *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
  *         description: OK
@@ -140,6 +142,13 @@ router.put('/', checkJwt, updateUser)
  *   delete:
  *     tags:
  *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
  *         description: OK
@@ -163,6 +172,13 @@ router.delete('/', checkJwt, deleteUser)
  *   get:
  *     tags:
  *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
  *         description: OK
@@ -186,6 +202,13 @@ router.get('/contacts', checkJwt, getContacts)
  *   post:
  *     tags:
  *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
  *         description: OK
@@ -209,6 +232,13 @@ router.post('/contacts', checkJwt, newContact)
  *   delete:
  *     tags:
  *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
  *         description: OK
