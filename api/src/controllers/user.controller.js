@@ -4,7 +4,7 @@ const { handlerHttp } = require('../utils/error.handler')
 
 const getUser = async (req, res) => {
   try {
-    const { email } = req.body
+    const email = req.user
     const resUser = await findUser(email)
     res.status(200).send(resUser)
   } catch (error) {
@@ -23,7 +23,7 @@ const getUsers = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const data = req.body
-    const updatedUser = await updateProfile(data)
+    const updatedUser = await updateProfile(data, req.user)
     if (updatedUser === 'User not found') { return res.status(400).send('User not found') }
     res.status(200).send(updatedUser)
   } catch (error) {

@@ -2,7 +2,7 @@ const { handlerHttp } = require('../utils/error.handler')
 const { addContact, deleteContact, getUserContacts } = require('../services/contact.services')
 // En los controladores no va la logica del negocio, eso va en services
 const getContacts = async (req, res) => {
-  const { userEmail } = req.body
+  const userEmail = req.user
   try {
     const response = await getUserContacts(userEmail)
     if (response === 'User not found') {

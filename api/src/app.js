@@ -5,7 +5,7 @@ const router = require('./routes')
 const morgan = require('morgan')
 const db = require('./config/mongo')
 const app = express()
-const { swaggerDocs: V1SwaggerDocs } = require('./swagger.js')
+const { swaggerDocs: V1SwaggerDocs } = require('./swagger')
 const port = process.env.PORT || 3001
 
 app.use(cors())
