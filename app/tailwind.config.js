@@ -15,6 +15,7 @@ module.exports = {
       appwhite: '#FEFFFF',
       appblack: '#212121'
     }
+
   },
   plugins: []
 }
