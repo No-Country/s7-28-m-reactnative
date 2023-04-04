@@ -1,10 +1,9 @@
 const { Schema, model } = require('mongoose')
 
 const AlertSchema = new Schema({
-  email: { type: String, required: true, unique: true },
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
   ubication: { type: String },
-  date: { type: String }, // TODO: Necesario?
-  reason: { type: String }// TODO: Necesario?
+  reason: { type: String }
 }, {
   timestamps: true, versionKey: false
 })

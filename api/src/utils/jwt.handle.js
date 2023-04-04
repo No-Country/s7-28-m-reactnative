@@ -6,7 +6,6 @@ const generateToken = (id) => {
 }
 const verifyToken = (token) => {
   const tokenVerified = verify(token, JWT_SECRET)
-  console.log(tokenVerified)
   return tokenVerified
 }
 

@@ -115,5 +115,7 @@ router.post('/', checkJwt, createAlertController)
  *                     type: object
  */
 router.get('/:id', checkJwt, getOneAlertController)
+router.get('/getusersendalerts', checkJwt, getOneAlertController)
+router.get('/getuserreciviedalerts', checkJwt, getOneAlertController)
 
 module.exports = { router }
