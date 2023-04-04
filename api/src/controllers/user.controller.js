@@ -1,7 +1,8 @@
 // En los controladores no va la logica del negocio, eso va en services
 const { findUser, updateProfile, deleteProfile, findAllUsers } = require('../services/user.services')
+const { uploadImage } = require('../utils/cloudinary')
 const { handlerHttp } = require('../utils/error.handler')
-
+const fs = require('node:fs/promises')
 const getUser = async (req, res) => {
   try {
     const email = req.user
@@ -23,6 +24,14 @@ const getUsers = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const data = req.body
+    // Si en el update viene un archivo lo guardamos en cloudinary
+    if (req.files?.profileImage) {
+      const cloudinaryObject = await uploadImage(req.files.profileImage.tempFilePath)
+      // seteamos en la data los datos de la imagen creada en cloudinary
+      data.profileImage = { public_id: cloudinaryObject.public_id, url: cloudinaryObject.secure_url }
+      // despues de subirla a cloudinary borramos el archivo de la carpeta uploads
+      await fs.unlink(req.files.profileImage.tempFilePath)
+    }
     const updatedUser = await updateProfile(data, req.user)
     if (updatedUser === 'User not found') { return res.status(400).send('User not found') }
     res.status(200).send(updatedUser)
