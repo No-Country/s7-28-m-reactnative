@@ -172,31 +172,36 @@ router.put('/profileImage', fileUpload({
 }), checkJwt, updateUserProfileImage)
 /**
  * @openapi
- * /users:
- *   delete:
- *     tags:
- *       - Users
- *     parameters:
- *       -  in: header
- *          name: token
- *          schema:
- *            type: string
- *          required: true
- *          description: Token generado por jwt
- *     responses:
- *       200:
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
+ * /users/profileImage:
+ *   put:
+ *    tags:
+ *     - Users
+ *   parameters:
+ *      - in: header
+ *        name: token
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Token generado por jwt
+ *      - in: formData
+ *        name: profileImage
+ *        type: file
+ *        required: true
+ *        description: Imagen de perfil del usuario
+ *   responses:
+ *     200:
+ *       description: OK
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: array
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 example: OK
+ *               data:
+ *                 type: array
+ *                 items:
  *                     type: object
  */
 router.delete('/', checkJwt, deleteUser)
