@@ -1,7 +1,7 @@
 const Router = require('express')
 const { registerController, loginController } = require('../controllers/auth.controller')
 const { newContact, removeContact, getContacts } = require('../controllers/contacts.controller')
-const { getUsers, getUser, updateUser, deleteUser } = require('../controllers/user.controller')
+const { getUsers, getUser, updateUser, deleteUser, updateUserProfileImage } = require('../controllers/user.controller')
 const { checkJwt } = require('../middlewares/authValidateSession')
 const fileUpload = require('express-fileupload')
 // const { logMiddleware } = require('../middlewares/log')
@@ -136,10 +136,40 @@ router.post('/login', loginController)
  *                   items:
  *                     type: object
  */
-router.put('/', fileUpload({
+router.put('/', checkJwt, updateUser)
+/**
+ * @openapi
+ * /users:
+ *   delete:
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       -  in: header
+ *          name: token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
+router.put('/profileImage', fileUpload({
   useTempFiles: true,
   tempFileDir: './uploads'
-}), checkJwt, updateUser)
+}), checkJwt, updateUserProfileImage)
 /**
  * @openapi
  * /users:

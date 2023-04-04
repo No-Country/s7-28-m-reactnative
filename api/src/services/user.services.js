@@ -17,6 +17,11 @@ const updateProfile = async (data, email) => {
   if (!resUpdatedUser) { return 'User not founded' }
   return resUpdatedUser
 }
+const updateProfileImage = async (profileImage, email) => {
+  const resUpdatedUserImage = await UserModel.findOneAndUpdate({ email }, { profileImage }, { new: true })
+  if (!resUpdatedUserImage) { return 'User not founded' }
+  return resUpdatedUserImage
+}
 const deleteProfile = async (id) => {
   const resDeletedUser = await UserModel.findOne({ _id: id })
   if (!resDeletedUser) { return 'User not found' }
@@ -26,4 +31,4 @@ const deleteProfile = async (id) => {
   await resDeletedUser.deleteOne()
   return resDeletedUser
 }
-module.exports = { findUser, updateProfile, deleteProfile, findAllUsers }
+module.exports = { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage }
