@@ -1,5 +1,6 @@
 // Aca va la logica del negocio
 const UserModel = require('../models/user.model')
+const { deleteImage } = require('../utils/cloudinary')
 
 const findUser = async (id) => {
   const resUser = await UserModel.findById(id)
@@ -16,9 +17,18 @@ const updateProfile = async (data, email) => {
   if (!resUpdatedUser) { return 'User not founded' }
   return resUpdatedUser
 }
+const updateProfileImage = async (profileImage, email) => {
+  const resUpdatedUserImage = await UserModel.findOneAndUpdate({ email }, { profileImage }, { new: true })
+  if (!resUpdatedUserImage) { return 'User not founded' }
+  return resUpdatedUserImage
+}
 const deleteProfile = async (id) => {
-  const resDeletedUser = await UserModel.findOneAndRemove({ _id: id })
+  const resDeletedUser = await UserModel.findOne({ _id: id })
   if (!resDeletedUser) { return 'User not found' }
+  if (resDeletedUser.profileImage.public_id) {
+    await deleteImage(resDeletedUser.profileImage.public_id)
+  }
+  await resDeletedUser.deleteOne()
   return resDeletedUser
 }
-module.exports = { findUser, updateProfile, deleteProfile, findAllUsers }
+module.exports = { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage }

@@ -14,9 +14,9 @@ const getContacts = async (req, res) => {
   }
 }
 const newContact = async (req, res) => {
-  const { userEmail, newContactId } = req.body
+  const { newContactId } = req.body
   try {
-    const response = await addContact(userEmail, newContactId)
+    const response = await addContact(req.user, newContactId)
     if (response === 'User not found') {
       return res.status(404).json({ error: response })
     }
@@ -29,9 +29,9 @@ const newContact = async (req, res) => {
   }
 }
 const removeContact = async (req, res) => {
-  const { userEmail, contactId } = req.body
+  const { contactId } = req.body
   try {
-    const response = await deleteContact(userEmail, contactId)
+    const response = await deleteContact(req.user, contactId)
     if (response === 'User not found') {
       return res.status(404).json({ error: response })
     }
