@@ -85,12 +85,19 @@ router.post('/', checkJwt, createAlertController)
  *     tags:
  *       - Alerts
  *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *       -  in: params
  *          name: Alert Id
  *          schema:
  *            type: string
  *          required: true
  *          description: ID del alerta
+ *
  *     responses:
  *       200:
  *         description: OK
