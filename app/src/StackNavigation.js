@@ -4,9 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // screens
 
+// import SliderScreen from './screens/SliderScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import RegisterSucces from './screens/RegisterSuccess'
+import BottomNav from './BottomNav'
+// import Slider from './components/Slider'
 
 const Stack = createNativeStackNavigator()
 
@@ -14,6 +17,11 @@ const StackNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen
+          name='presentation' component={Slider} options={{
+            headerShown: false
+          }}
+        /> */}
         <Stack.Screen
           name='login' component={LoginScreen} options={{
             headerShown: false
@@ -26,6 +34,13 @@ const StackNavigation = () => {
         />
         <Stack.Screen
           name='registersuccess' component={RegisterSucces} options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name='bottom'
+          component={BottomNav}
+          options={{
             headerShown: false
           }}
         />

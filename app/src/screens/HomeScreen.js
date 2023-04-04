@@ -1,8 +1,17 @@
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const HomeScreen = ({ navigation }) => {
+  const handleGetToken = async () => {
+    const dataToken = await AsyncStorage.getItem('AccessToken')
+    if (!dataToken) {
+      navigation.navigate('login')
+    } else {
+      navigation.navigate('bottom')
+    }
+  }
   return (
     <SafeAreaView>
       {/* Header */}
@@ -15,7 +24,7 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Buttons */}
       <View className='items-center'>
-        <TouchableOpacity onPress={() => { Alert.alert('Estoy en peligro!') }} className='border-4 border-appred rounded-full p-5 m-5 mt-16 h-60 w-60 justify-center items-center'>
+        <TouchableOpacity onPress={() => { Alert.alert('Estoy en peligro!') }} className='border-4 border-appred rounded-full  p-5 m-5 mt-16 h-60 w-60 justify-center items-center'>
           <Image
             source={require('../../assets/alertIcon.png')}
             className='w-50 p-4'
