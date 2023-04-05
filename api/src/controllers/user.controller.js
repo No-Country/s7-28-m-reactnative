@@ -2,7 +2,7 @@
 const { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage } = require('../services/user.services')
 const { uploadImage } = require('../utils/cloudinary')
 const { handlerHttp } = require('../utils/error.handler')
-const fs = require('node:fs/promises')
+const fs = require('fs/promises')
 const getUser = async (req, res) => {
   try {
     const email = req.user
