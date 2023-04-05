@@ -46,7 +46,7 @@ const updateUserProfileImage = async (req, res) => {
     const updatedUser = await updateProfileImage(profileImage, email)
     res.status(202).send(updatedUser)
   } catch (error) {
-    handlerHttp(res, 'Error update user')
+    handlerHttp(res, `Error update user: ${error.message}`)
   }
 }
 const deleteUser = async (req, res) => {
