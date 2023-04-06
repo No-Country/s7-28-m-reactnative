@@ -3,6 +3,9 @@ const UserModel = require('../models/user.model')
 
 const getAllAlert = async () => {
   const alerts = await AlertModel.find()
+
+  await alerts.populate('userId')
+
   return alerts
 }
 
@@ -26,9 +29,7 @@ const createAlert = async (alert, email) => {
 
   try {
     user = await UserModel.findOne({ email })
-    console.log(user)
     result = await AlertModel.create({ ...alert, userId: user._id })
-    console.log({ result })
   } catch (error) {
     console.log(error)
   }

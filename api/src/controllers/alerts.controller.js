@@ -1,4 +1,4 @@
-const { getAllAlert, createAlert, getOneAlert, getAllSendUserAlert } = require('../services/alerts.services')
+const { getAllAlert, createAlert, getOneAlert, getAllSendUserAlert, getAllReceivedUserAlert } = require('../services/alerts.services')
 
 const getAllAlertsController = async (req, res) => {
   try {
@@ -11,10 +11,23 @@ const getAllAlertsController = async (req, res) => {
 }
 
 const getUserSendAlertController = async (req, res) => {
+  console.log(req.user)
   const email = req.user
 
   try {
     const alerts = await getAllSendUserAlert(email)
+
+    res.status(200).send({ status: 'success', data: alerts })
+  } catch (error) {
+    res.status(404).send({ status: 'error', message: error })
+  }
+}
+
+const getAllReceivedUserAlertController = async (req, res) => {
+  const email = req.user
+
+  try {
+    const alerts = await getAllReceivedUserAlert(email)
 
     res.status(200).send({ status: 'success', data: alerts })
   } catch (error) {
@@ -40,8 +53,8 @@ const createAlertController = async (req, res) => {
 
     res.status(200).send({ status: 'success', data: result })
   } catch (error) {
-    res.status(404).send({ status: 'error', message: 'a' + error })
+    res.status(404).send({ status: 'error', message: error })
   }
 }
 
-module.exports = { getAllAlertsController, createAlertController, getOneAlertController, getUserSendAlertController }
+module.exports = { getAllAlertsController, createAlertController, getOneAlertController, getUserSendAlertController, getAllReceivedUserAlertController }

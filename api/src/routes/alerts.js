@@ -2,7 +2,9 @@ const Router = require('express')
 const {
   getAllAlertsController,
   createAlertController,
-  getOneAlertController
+  getOneAlertController,
+  getUserSendAlertController,
+  getAllReceivedUserAlertController
 } = require('../controllers/alerts.controller')
 const { checkJwt } = require('../middlewares/authValidateSession')
 
@@ -115,7 +117,7 @@ router.post('/', checkJwt, createAlertController)
  *                     type: object
  */
 router.get('/:id', checkJwt, getOneAlertController)
-router.get('/getusersendalerts', checkJwt, getOneAlertController)
-router.get('/getuserreciviedalerts', checkJwt, getOneAlertController)
+router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
+router.get('/user/receivedalert', checkJwt, getAllReceivedUserAlertController)
 
 module.exports = { router }
