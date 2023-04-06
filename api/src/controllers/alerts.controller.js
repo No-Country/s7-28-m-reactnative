@@ -1,4 +1,4 @@
-const { getAllAlert, createAlert, getOneAlert } = require('../services/alerts.services')
+const { getAllAlert, createAlert, getOneAlert, getAllSendUserAlert, getAllReceivedUserAlert } = require('../services/alerts.services')
 
 const getAllAlertsController = async (req, res) => {
   try {
@@ -6,7 +6,32 @@ const getAllAlertsController = async (req, res) => {
 
     res.status(200).send({ status: 'success', data: alerts })
   } catch (error) {
-    console.log(error)
+    res.status(404).send({ status: 'error', message: error })
+  }
+}
+
+const getUserSendAlertController = async (req, res) => {
+  console.log(req.user)
+  const email = req.user
+
+  try {
+    const alerts = await getAllSendUserAlert(email)
+
+    res.status(200).send({ status: 'success', data: alerts })
+  } catch (error) {
+    res.status(404).send({ status: 'error', message: error })
+  }
+}
+
+const getAllReceivedUserAlertController = async (req, res) => {
+  const email = req.user
+
+  try {
+    const alerts = await getAllReceivedUserAlert(email)
+
+    res.status(200).send({ status: 'success', data: alerts })
+  } catch (error) {
+    res.status(404).send({ status: 'error', message: error })
   }
 }
 
@@ -18,18 +43,18 @@ const getOneAlertController = async (req, res) => {
 
     res.status(200).send({ status: 'success', data: alert })
   } catch (error) {
-    console.log(error)
+    res.status(404).send({ status: 'error', message: error.message })
   }
 }
 
 const createAlertController = async (req, res) => {
   try {
-    const result = await createAlert()
+    const result = await createAlert(req.body, req.user)
 
     res.status(200).send({ status: 'success', data: result })
   } catch (error) {
-    console.log(error)
+    res.status(404).send({ status: 'error', message: error })
   }
 }
 
-module.exports = { getAllAlertsController, createAlertController, getOneAlertController }
+module.exports = { getAllAlertsController, createAlertController, getOneAlertController, getUserSendAlertController, getAllReceivedUserAlertController }
