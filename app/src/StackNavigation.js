@@ -43,6 +43,14 @@ const StackNavigation = () => {
             headerShown: false
           }}
         />
+
+        <Stack.Screen
+          name='newContact'
+          component={ListUsers}
+          options={{
+            headerShown: false
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -1,5 +1,16 @@
-.expo
+node_modules/
+.env
 __generated__
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
 
 ### ReactNative.Xcode Stack ###
 ## User settings
