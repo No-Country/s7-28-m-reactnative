@@ -117,7 +117,67 @@ router.post('/', checkJwt, createAlertController)
  *                     type: object
  */
 router.get('/:id', checkJwt, getOneAlertController)
+
+/**
+ * @openapi
+ * /user/sendalerts:
+ *   get:
+ *     tags:
+ *       - Alerts
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
+
+/**
+ * @openapi
+ * /user/receivedalert:
+ *   get:
+ *     tags:
+ *       - Alerts
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 router.get('/user/receivedalert', checkJwt, getAllReceivedUserAlertController)
 
 module.exports = { router }
