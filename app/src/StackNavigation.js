@@ -9,6 +9,7 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import RegisterSucces from './screens/RegisterSuccess'
 import BottomNav from './BottomNav'
+import ListUsers from './components/contact/ListUsers'
 // import Slider from './components/Slider'
 
 const Stack = createNativeStackNavigator()
@@ -40,6 +41,14 @@ const StackNavigation = () => {
         <Stack.Screen
           name='bottom'
           component={BottomNav}
+          options={{
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name='newContact'
+          component={ListUsers}
           options={{
             headerShown: false
           }}
