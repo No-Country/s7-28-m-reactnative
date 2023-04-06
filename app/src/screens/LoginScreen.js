@@ -31,7 +31,6 @@ const Login = ({ navigation }) => {
         console.log(response)
         if (response.status === 201) {
           AsyncStorage.setItem('AccessToken', response.data.token)
-          console.log(response.data.token)
           navigation.navigate('bottom')
           showToast()
         }

@@ -5,32 +5,34 @@ const { width } = Dimensions.get('screen')
 
 const Pagination = ({ data, scrollX, index }) => {
   return (
-    <View style={styles.container}>
-      {data.map((_, idx) => {
-        const inputRange = [(idx - 1) * width, idx * width, (idx + 1) * width]
+    <View>
+      <View style={styles.container}>
+        {data.map((_, idx) => {
+          const inputRange = [(idx - 1) * width, idx * width, (idx + 1) * width]
 
-        const dotWidth = scrollX.interpolate({
-          inputRange,
-          outputRange: [12, 30, 12],
-          extrapolate: 'clamp'
-        })
+          const dotWidth = scrollX.interpolate({
+            inputRange,
+            outputRange: [12, 30, 12],
+            extrapolate: 'clamp'
+          })
 
-        const backgroundColor = scrollX.interpolate({
-          inputRange,
-          outputRange: ['#C9D7E1', '#4994C2', '#C9D7E1'],
-          extrapolate: 'clamp'
-        })
+          const backgroundColor = scrollX.interpolate({
+            inputRange,
+            outputRange: ['#C9D7E1', '#4994C2', '#C9D7E1'],
+            extrapolate: 'clamp'
+          })
 
-        return (
-          <Animated.View
-            key={idx.toString()}
-            style={[
-              styles.dot,
-              { width: dotWidth, backgroundColor }
-            ]}
-          />
-        )
-      })}
+          return (
+            <Animated.View
+              key={idx.toString()}
+              style={[
+                styles.dot,
+                { width: dotWidth, backgroundColor }
+              ]}
+            />
+          )
+        })}
+      </View>
     </View>
   )
 }
@@ -39,12 +41,9 @@ export default Pagination
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
     bottom: 35,
     flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
+    width: '50%'
   },
   dot: {
     width: 12,

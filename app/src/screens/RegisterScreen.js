@@ -45,9 +45,9 @@ const Register = ({ navigation }) => {
         />
         <CustomInput
           name='phone'
-          placeholder='Ingrsa tu numero de teléfono'
+          placeholder='Ingresa tu numero de teléfono'
           control={control}
-          rules={{ required: 'Igrese un telefono valido' }}
+          rules={{ required: 'Ingrese un telefono valido' }}
         />
         <View className='flex-row'>
           <View className='relative w-full'>

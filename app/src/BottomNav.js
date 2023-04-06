@@ -4,7 +4,8 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 
 // screens
 
-import HomeScreen from './screens/HomeScreen'
+// import HomeScreen from './screens/HomeScreen'
+import Home from './components/home/Home'
 import ContactsScreen from './screens/ContactsScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import NotificationsScreen from './screens/NotificationsScreen'
@@ -25,7 +26,7 @@ function MyTabs ({ navigation }) {
     >
       <Tab.Group>
         <Tab.Screen
-          name='Inicio' component={HomeScreen} options={{
+          name='Inicio' component={Home} options={{
             headerShown: false,
             tabBarIcon: ({ color, size }) => {
               return (

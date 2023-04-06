@@ -13,13 +13,14 @@ const { width, height } = Dimensions.get('screen')
 const SlideItem = ({ item }) => {
   return (
     <SafeAreaView>
-      <View style={styles.container} className='flex justify-center'>
-        <View>
-          <Text className='text-center m-5 font-bold text-lg'>{item.description}</Text>
+      <View style={styles.container}>
+        <View style={styles.description}>
+          <Text style={styles.descriptionText}>{item.description}</Text>
         </View>
         <Animated.Image
           source={item.img}
           resizeMode='contain'
+          style={styles.image}
         />
       </View>
     </SafeAreaView>
@@ -34,8 +35,19 @@ const styles = StyleSheet.create({
     height,
     alignItems: 'center'
   },
+  description: {
+    width: '100%',
+    paddingLeft: 20,
+    paddingRight: 20
+
+  },
+  descriptionText: {
+    textAlign: 'center',
+    fontSize: 22
+  },
   image: {
     flex: 0.6,
-    width: '100%'
+    width: '100%',
+    marginTop: 20
   }
 })
