@@ -2,9 +2,25 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
+import * as Contacts from 'expo-contacts'
 
 const EmptyContacts = () => {
   const navigation = useNavigation()
+
+  const getPermissions = async () => {
+    const { status } = await Contacts.requestPermissionsAsync()
+    if (status === 'granted') {
+      const { data } = await Contacts.getContactsAsync({
+        fields: [Contacts.PHONE_NUMBERS]
+      })
+      if (data.length > 0) {
+        navigation.navigate('newContact', {
+          data
+        })
+        console.log(data)
+      }
+    }
+  }
 
   return (
     <View className='flex justify-center items-center mt-3'>
@@ -31,17 +47,16 @@ const EmptyContacts = () => {
         </View>
         <View className='mt-10 flex flex-col justify-center items-center'>
           <Text className='text-xl font-semibold pb-5'>Agregar contacto</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('newContact')} className='flex justify-center items-center border-4 border-ligthgreen-600 rounded-full h-36 w-36'>
+          <TouchableOpacity onPress={() => getPermissions()} className='flex justify-center items-center border-4 border-appgreen rounded-full h-36 w-36'>
             <Ionicons
               name='add-outline'
               size={60}
-              color='black'
+              color='#72B040'
             />
           </TouchableOpacity>
         </View>
       </View>
     </View>
-
   )
 }
 

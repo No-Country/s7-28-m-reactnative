@@ -9,6 +9,7 @@ import RegisterScreen from './screens/RegisterScreen'
 import RegisterSucces from './screens/RegisterSuccess'
 import BottomNav from './BottomNav'
 import Slider from './components/Slider'
+import ListUsers from './components/contact/ListUsers'
 
 const Stack = createNativeStackNavigator()
 

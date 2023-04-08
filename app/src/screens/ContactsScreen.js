@@ -44,7 +44,6 @@ const ContactsScreen = () => {
   }, [token, myContacts])
 
   const deleteContact = (id) => {
-    console.log(id)
     const config = {
       data: { contactId: id },
       headers: { Authorization: `Bearer ${token}` }
@@ -109,7 +108,7 @@ const ContactsScreen = () => {
                       <View key={c._id} className='w-full'>
                         <View className='flex flex-row justify-between items-center bg-appbluelight py-5 border-b border-appblue px-7'>
                           <View className='flex flex-row items-center gap-x-5'>
-                            <Image
+                            {/* <Image
                               style={{
                                 width: 50,
                                 height: 50,
@@ -119,7 +118,7 @@ const ContactsScreen = () => {
                               source={{
                                 uri: c.profileImage?.url
                               }}
-                            />
+                            /> */}
                             <Text className='text-lg'>{c.firstName}</Text>
                           </View>
                           <View>

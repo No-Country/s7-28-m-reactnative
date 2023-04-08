@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import axios from 'axios'
@@ -6,13 +6,23 @@ import { BASE_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Toast from 'react-native-toast-message'
 import { useNavigation } from '@react-navigation/native'
+import Spinner from 'react-native-loading-spinner-overlay'
+import Ionicons from '@expo/vector-icons/Ionicons'
 
-const ListUsers = () => {
+const ListUsers = ({ route }) => {
   const [token, setToken] = useState('')
-  const [allUsers, setAllUsers] = useState('')
   const navigation = useNavigation()
+  const [loading, setLoading] = useState(false)
+
+  const startLoading = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }
 
   useEffect(() => {
+    startLoading()
     const handleGetToken = async () => {
       const dataToken = await AsyncStorage.getItem('AccessToken')
       if (dataToken) {
@@ -22,23 +32,7 @@ const ListUsers = () => {
       }
     }
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-
-    function fetchUsers () {
-      fetch(BASE_URL + 'users/all', config)
-        .then((response) => response.json())
-        .then((data) => {
-          setAllUsers(data)
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    }
-
     handleGetToken()
-    fetchUsers()
   }, [token])
 
   const showToastOK = () => {
@@ -79,216 +73,44 @@ const ListUsers = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View className='flex justify-center items-center mt-6'>
+        <View className='flex justify-center items-center mt-6 mb-3'>
           <Text className='text-lg font-semibold'>Elije que contacto quieres agregar</Text>
         </View>
-        {allUsers
+        {loading
           ? (
-            <View className='px-5 gap-y-5 py-6'>
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[3]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[3]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[3]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[4]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[4]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[4]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[5]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[5]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[5]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[6]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[6]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[6]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[7]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[7]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[7]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[8]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[8]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[8]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[8]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[9]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[9]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[10]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[10]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[10]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View className='flex flex-row items-center justify-around py-2 bg-appbluelight rounded-lg' key={allUsers[3]?.id}>
-                <View className='flex flex-row items-center gap-x-4'>
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      resizeMode: 'cover'
-                    }}
-                    className='rounded-full'
-                    source={{
-                      uri: allUsers[11]?.profileImage?.url
-                    }}
-                  />
-                  <Text className='text-base'>{allUsers[11]?.firstName}</Text>
-                </View>
-                <View>
-                  <TouchableOpacity onPress={() => addNewContact(allUsers[11]?._id)}>
-                    <Text className='text-base'>Agregar contacto</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
+            <Spinner
+              visible={loading}
+              textContent='Cargando contactos...'
+            />
             )
-          : (
-            <View className='flex justify-center items-center mt-24'>
-              <Text className='text-xl'>Cargando...</Text>
-            </View>
-            )}
+          : route.params?.data?.length > 1
+            ? (
+                route.params?.data.map((c) => (
+                  <View key={c.lookupKey} className='rounded-lg px-3 py-1'>
+                    <View className='flex flex-row items-center justify-around py-6 bg-appbluelight rounded-lg border' key={c.lookupKey}>
+                      <View>
+                        <Ionicons
+                          name='person-circle-outline'
+                          size={40}
+                        />
+                      </View>
+                      <View className='flex flex-row items-center gap-x-4 w-32'>
+                        <Text className='text-base'>{c.firstName}</Text>
+                      </View>
+                      <View>
+                        <TouchableOpacity onPress={() => addNewContact(c.lookupKey)}>
+                          <Text className='text-base'>Agregar contacto</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                ))
+              )
+            : (
+              <View className='flex justify-center items-center'>
+                <Text className='text-lg'>No hay contactos</Text>
+              </View>
+              )}
       </ScrollView>
     </SafeAreaView>
 
