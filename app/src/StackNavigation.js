@@ -10,6 +10,9 @@ import RegisterSucces from './screens/RegisterSuccess'
 import BottomNav from './BottomNav'
 import Slider from './components/Slider'
 import ListUsers from './components/contact/ListUsers'
+import FaqScreen from './screens/FaQScreen'
+import HowToUseScreen from './screens/HowToUseScreen'
+import PersonalInfoScreen from './screens/PersonalInfoScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -40,6 +43,27 @@ const StackNavigation = () => {
         <Stack.Screen
           name='bottom'
           component={BottomNav}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name='HowToUse'
+          component={HowToUseScreen}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name='FaqScreen'
+          component={FaqScreen}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name='PersonalInfo'
+          component={PersonalInfoScreen}
           options={{
             headerShown: false
           }}

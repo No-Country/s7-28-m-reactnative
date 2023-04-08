@@ -47,7 +47,7 @@ const EmptyContacts = () => {
         </View>
         <View className='mt-10 flex flex-col justify-center items-center'>
           <Text className='text-xl font-semibold pb-5'>Agregar contacto</Text>
-          <TouchableOpacity onPress={() => getPermissions()} className='flex justify-center items-center border-4 border-appgreen rounded-full h-36 w-36'>
+          <TouchableOpacity onPress={() => navigation.navigate('newContact')} className='flex justify-center border-appgreen items-center border-4 border-ligthgreen-600 rounded-full h-36 w-36'>
             <Ionicons
               name='add-outline'
               size={60}
