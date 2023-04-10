@@ -1,5 +1,5 @@
 // En los controladores no va la logica del negocio, eso va en services
-const { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage } = require('../services/user.services')
+const { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage, getUsersByEmail } = require('../services/user.services')
 const { uploadImage } = require('../utils/cloudinary')
 const { handlerHttp } = require('../utils/error.handler')
 const fs = require('fs/promises')
@@ -21,6 +21,17 @@ const getUsers = async (req, res) => {
     handlerHttp(res, 'Error get users')
   }
 }
+
+const searchUsers = async (req, res) => {
+  try {
+    const { query } = req.params
+    const response = await getUsersByEmail(query)
+    res.status(200).send(response)
+  } catch (error) {
+    handlerHttp(res, (!error ? 'Error cannot get User' : error.message))
+  }
+}
+
 const updateUser = async (req, res) => {
   try {
     const data = req.body
@@ -59,4 +70,4 @@ const deleteUser = async (req, res) => {
     handlerHttp(res, (!error ? 'Error delete user' : error.message))
   }
 }
-module.exports = { getUser, getUsers, updateUser, deleteUser, updateUserProfileImage }
+module.exports = { getUser, getUsers, updateUser, deleteUser, updateUserProfileImage, searchUsers }

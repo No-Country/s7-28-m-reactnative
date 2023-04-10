@@ -12,6 +12,11 @@ const findAllUsers = async (id) => {
   if (!resUser) { throw new Error('User not found') }
   return resUser
 }
+const getUsersByEmail = async (query) => {
+  const resUsers = await UserModel.find({ email: { $regex: `^${query}`, $options: 'i' } }).select('-password -contacts -createdAt -updatedAt -receivedAlerts -sendAlerts')
+  if (!resUsers || !resUsers.length) { throw new Error(`No emails were found starting with: ${query}`) }
+  return resUsers
+}
 const updateProfile = async (data, email) => {
   const resUpdatedUser = await UserModel.findOneAndUpdate({ email }, data, { new: true })
   if (!resUpdatedUser) { return 'User not founded' }
@@ -31,4 +36,4 @@ const deleteProfile = async (id) => {
   await resDeletedUser.deleteOne()
   return resDeletedUser
 }
-module.exports = { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage }
+module.exports = { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage, getUsersByEmail }
