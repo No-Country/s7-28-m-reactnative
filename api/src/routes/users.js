@@ -1,7 +1,7 @@
 const Router = require('express')
 const { registerController, loginController } = require('../controllers/auth.controller')
 const { newContact, removeContact, getContacts } = require('../controllers/contacts.controller')
-const { getUsers, getUser, updateUser, deleteUser, updateUserProfileImage } = require('../controllers/user.controller')
+const { getUsers, getUser, updateUser, deleteUser, updateUserProfileImage, searchUsers } = require('../controllers/user.controller')
 const { checkJwt } = require('../middlewares/authValidateSession')
 const fileUpload = require('express-fileupload')
 // const { logMiddleware } = require('../middlewares/log')
@@ -68,6 +68,29 @@ router.get('/', checkJwt, getUser)
  *                     type: object
  */
 router.get('/all', checkJwt, getUsers)
+/**
+ * @openapi
+ * /users/search/query:
+ *   get:
+ *     tags:
+ *       - Users
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
+router.get('/search/:query', checkJwt, searchUsers)
 /**
  * @openapi
  * /users/register:
