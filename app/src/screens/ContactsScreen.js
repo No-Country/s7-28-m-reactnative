@@ -108,18 +108,27 @@ const ContactsScreen = () => {
                       <View key={c._id} className='w-full'>
                         <View className='flex flex-row justify-between items-center bg-appbluelight py-5 border-b border-appblue px-7'>
                           <View className='flex flex-row items-center gap-x-5'>
-                            {/* <Image
-                              style={{
-                                width: 50,
-                                height: 50,
-                                resizeMode: 'cover'
-                              }}
-                              className='rounded-full'
-                              source={{
-                                uri: c.profileImage?.url
-                              }}
-                            /> */}
-                            <Text className='text-lg'>{c.firstName}</Text>
+                            {c?.profileImage
+                              ? (
+                                <Image
+                                  style={{
+                                    width: 50,
+                                    height: 50,
+                                    resizeMode: 'cover'
+                                  }}
+                                  className='rounded-full'
+                                  source={{
+                                    uri: c.profileImage?.url
+                                  }}
+                                />
+                                )
+                              : (
+                                <Ionicons
+                                  name='person-circle-outline'
+                                  size={40}
+                                />
+                                )}
+                            <Text className='text-base'>{c.email}</Text>
                           </View>
                           <View>
                             <TouchableOpacity className='bg-appwhite rounded-full p-1' onPress={() => deleteContact(c._id)}>
@@ -139,20 +148,29 @@ const ContactsScreen = () => {
                       <View key={c._id} className='w-full'>
                         <View className='flex flex-row justify-between items-center bg-appbluelight py-5 border-b border-appblue px-7'>
                           <View className='flex flex-row items-center gap-x-5'>
-                            <Image
-                              style={{
-                                width: 50,
-                                height: 50,
-                                resizeMode: 'cover'
-                              }}
-                              className='rounded-full'
-                              source={{
-                                uri: c.profileImage?.url
-                              }}
-                            />
-                            <Text className='text-lg'>{c.firstName}</Text>
+                            {c?.profileImage
+                              ? (
+                                <Image
+                                  style={{
+                                    width: 50,
+                                    height: 50,
+                                    resizeMode: 'cover'
+                                  }}
+                                  className='rounded-full'
+                                  source={{
+                                    uri: c.profileImage?.url
+                                  }}
+                                />
+                                )
+                              : (
+                                <Ionicons
+                                  name='person-circle-outline'
+                                  size={40}
+                                />
+                                )}
+                            <Text className='text-base w-48'>{c.email}</Text>
                           </View>
-                          <View className='flex flex-row gap-x-4'>
+                          <View className='flex flex-row gap-x-3'>
                             <TouchableOpacity className='bg-appwhite rounded-full p-1'>
                               <Ionicons
                                 name='checkmark-done-outline'

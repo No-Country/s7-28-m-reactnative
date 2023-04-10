@@ -2,25 +2,9 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
-import * as Contacts from 'expo-contacts'
 
 const EmptyContacts = () => {
   const navigation = useNavigation()
-
-  const getPermissions = async () => {
-    const { status } = await Contacts.requestPermissionsAsync()
-    if (status === 'granted') {
-      const { data } = await Contacts.getContactsAsync({
-        fields: [Contacts.PHONE_NUMBERS]
-      })
-      if (data.length > 0) {
-        navigation.navigate('newContact', {
-          data
-        })
-        console.log(data)
-      }
-    }
-  }
 
   return (
     <View className='flex justify-center items-center mt-3'>
