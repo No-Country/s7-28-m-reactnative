@@ -50,9 +50,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/lauti-santillan" target="_blank" rel="author">
-
           <img width="110" src="./app/assets/devsPhotos/lautaro.jpg"/>
-
         </a>
         <h4 style="margin-top: 1rem;">Lautaro Santillan</h4>
       </div>
@@ -60,9 +58,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/raulereno" target="_blank" rel="author">
-
           <img width="110" src="./app/assets/devsPhotos/raul.jpg"/>
-
         </a>
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
       </div>
@@ -121,4 +117,3 @@ npm run dev
 ## 📄 Licencia
 
 [MIT](https://opensource.org/licenses/MIT)
-
