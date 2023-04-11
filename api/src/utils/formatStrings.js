@@ -4,13 +4,16 @@ const formatDate = () => {
 
   const weekDay = weekDays[date.getDay()]
   const day = date.getDate()
-  const month = date.getMonth() + 1
+
+  let month = date.getMonth() + 1
+  month = month > 9 ? month : `0${month}`
+
   const hour = date.getHours()
   const minutes = date.getMinutes()
 
   return {
     day: `${weekDay}`,
-    date: `${day}/0${month}`,
+    date: `${day}/${month}`,
     hour: `${hour}:${minutes}`
   }
 }
