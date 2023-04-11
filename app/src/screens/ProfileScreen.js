@@ -20,7 +20,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <SafeAreaView>
       {Modal && <View className='w-full z-50 h-screen flex items-center justify-center bg-appblack bg-opacity-20 absolute top-0'>
-        <View className=' w-10 p-5 z-50 bg-appgray flex items-center justify-between'>
+        <View className=' w-100 p-5 z-50 rounded-3xl mx-5 bg-appgray flex items-center justify-between'>
           <View className='mb-2 '>
             <Image className='rounded-full' source={require('../../images/Character.png')} />
           </View>
@@ -30,10 +30,10 @@ const ProfileScreen = ({ navigation }) => {
           </View>
           <View className='flex flex-row gap-4 w-full justify-end'>
             <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={() => SetModal(false)}>Cancelar</Text></TouchableOpacity>
-            <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={() => SetModal(false)}>Entendido</Text></TouchableOpacity>
+            <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={handleRemoveToken}>Entendido</Text></TouchableOpacity>
           </View>
         </View>
-                </View>}
+      </View>}
 
       {/* Header */}
 
@@ -80,7 +80,7 @@ const ProfileScreen = ({ navigation }) => {
         <Button
           title='Cerrar Sesion'
           color='#C83D3D'
-          onPress={handleRemoveToken}
+          onPress={() => SetModal(true)}
         />
       </TouchableOpacity>
     </SafeAreaView>
