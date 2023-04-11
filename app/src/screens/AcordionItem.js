@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Animated, StyleSheet, LayoutAnimation } from 'react-native'
+import { View, Text, TouchableOpacity, Animated, LayoutAnimation } from 'react-native'
 import * as React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
@@ -53,7 +53,7 @@ const AcordionItem = ({ title, bodyText }) => {
       </View>
       {showContent && (
         <View className='mx-5 mt-5 pb-2'>
-          <Text>{bodyText}</Text>
+          <Text className='text-lg'>{bodyText}</Text>
         </View>
       )}
     </>

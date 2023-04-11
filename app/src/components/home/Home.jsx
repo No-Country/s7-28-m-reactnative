@@ -57,8 +57,31 @@ const Home = ({ navigation }) => {
       })
   }
 
+  const handlereachgodalert = async () => {
+    const url = await getPermissions()
+    const data = () => {
+      return (
+        {
+          ubication: url,
+          reason: 'Llegue bien!'
+        }
+      )
+    }
+    console.log(token)
+    await axios.post(BASE_URL + 'alerts', data(), { headers: { authorization: 'Bearer ' + token } })
+      .then(function (response) {
+        console.log(response)
+        if (response.status === 201) {
+          console.log(response)
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
   return (
-    <HomeScreen onSubmit={onSubmit} />
+    <HomeScreen onSubmit={onSubmit} handlereachgodalert={handlereachgodalert} />
   )
 }
 
