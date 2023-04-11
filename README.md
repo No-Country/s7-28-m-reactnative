@@ -16,7 +16,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/marceloagustinlopezramallo/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFCxAa9168IOQ/profile-framedphoto-shrink_400_400/0/1668625205408?e=1680040800&v=beta&t=GQWC5R_IA3muRd_r0yhaippZo2hKYrqujm6NEiPHpSI"/>
+          <img width="110" src="./app/assets/devsPhotos/agustin.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">M. Agustin Lopez Ramallo</h4>
       </div>
@@ -24,7 +24,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/mauro-tomas-herrera" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQEJ07eykXnhDw/profile-framedphoto-shrink_400_400/0/1677878732151?e=1680040800&v=beta&t=uvSkwIO3rmGWDjwpDLmBPHjF6KaMvNyZRRet9I4pyxo"/>
+          <img width="110" src="./app/assets/devsPhotos/tomas.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Mauro Tomas Herrera</h4>
       </div>
@@ -32,7 +32,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/martin-maruca/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQHQ3XpgG3_gQw/profile-framedphoto-shrink_400_400/0/1666388316392?e=1680040800&v=beta&t=C5BPED9WVQ8qDWu_9jdqDH8HuUnCmYfJ0NAjnuEcqeA"/>
+          <img width="110" src="./app/assets/devsPhotos/martin.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Martin Maruca</h4>
       </div>
@@ -42,7 +42,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/crismar-silva" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/C4E03AQEx27IJA453NA/profile-displayphoto-shrink_400_400/0/1650248210931?e=1684972800&v=beta&t=kSLgWQiZF0UEWkNJ118SldBZC7Q9dyR0TJvo7WX3aDQ"/>
+          <img width="110" src="./app/assets/devsPhotos/crismar.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Crismar Silva</h4>
       </div>
@@ -50,7 +50,9 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/lauti-santillan" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGBks8iHtt2lA/profile-displayphoto-shrink_400_400/0/1670273115922?e=1680040800&v=beta&t=YJAn2LMsYzIhDBh71rFGbgUklQZ48AZeESGI43VbiQo"/>
+
+          <img width="110" src="./app/assets/devsPhotos/lautaro.jpg"/>
+
         </a>
         <h4 style="margin-top: 1rem;">Lautaro Santillan</h4>
       </div>
@@ -58,7 +60,9 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/raulereno" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGGq-Lf7WAyhQ/profile-framedphoto-shrink_400_400/0/1663895212481?e=1680040800&v=beta&t=OpAAgxsA1UKZXuDkfctXyKqWGLKFAO_JSo2TK4V3VKU"/>
+
+          <img width="110" src="./app/assets/devsPhotos/raul.jpg"/>
+
         </a>
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
       </div>
@@ -68,7 +72,7 @@ API URL:https://alwaysalert.onrender.com/
      <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQEjlBFCTy4Zag/profile-framedphoto-shrink_200_200/0/1674102700480?e=1680328800&v=beta&t=pYG8PwYsV9QjyNT0mn9jq2NQc65KdhHuyYXWPHeG574"/>
+          <img width="110" src="./app/assets/devsPhotos/malena.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Malena Hernández</h4>
       </div>
