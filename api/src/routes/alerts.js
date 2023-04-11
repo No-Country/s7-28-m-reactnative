@@ -120,7 +120,7 @@ router.get('/:id', checkJwt, getOneAlertController)
 
 /**
  * @openapi
- * /user/sendalerts:
+ * /alerts/user/sendalerts:
  *   get:
  *     tags:
  *       - Alerts
@@ -151,7 +151,7 @@ router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
 
 /**
  * @openapi
- * /user/receivedalert:
+ * /alerts/user/receivedalert:
  *   get:
  *     tags:
  *       - Alerts
@@ -178,6 +178,6 @@ router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
  *                   items:
  *                     type: object
  */
-router.get('/user/receivedalert', checkJwt, getAllReceivedUserAlertController)
+router.get('/user/receivedalerts', checkJwt, getAllReceivedUserAlertController)
 
 module.exports = { router }
