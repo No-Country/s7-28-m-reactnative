@@ -1,8 +1,8 @@
 // En los controladores no va la logica del negocio, eso va en services
-const { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage } = require('../services/user.services')
+const { findUser, updateProfile, deleteProfile, findAllUsers, updateProfileImage, getUsersByEmail } = require('../services/user.services')
 const { uploadImage } = require('../utils/cloudinary')
 const { handlerHttp } = require('../utils/error.handler')
-const fs = require('node:fs/promises')
+const fs = require('fs/promises')
 const getUser = async (req, res) => {
   try {
     const email = req.user
@@ -21,6 +21,18 @@ const getUsers = async (req, res) => {
     handlerHttp(res, 'Error get users')
   }
 }
+
+const searchUsers = async (req, res) => {
+  try {
+    const { query } = req.params
+    const email = req.user
+    const response = await getUsersByEmail(query, email)
+    res.status(200).send(response)
+  } catch (error) {
+    handlerHttp(res, (!error ? 'Error cannot get User' : error.message))
+  }
+}
+
 const updateUser = async (req, res) => {
   try {
     const data = req.body
@@ -46,7 +58,7 @@ const updateUserProfileImage = async (req, res) => {
     const updatedUser = await updateProfileImage(profileImage, email)
     res.status(202).send(updatedUser)
   } catch (error) {
-    handlerHttp(res, 'Error update user')
+    handlerHttp(res, `Error update user: ${error.message}`)
   }
 }
 const deleteUser = async (req, res) => {
@@ -59,4 +71,4 @@ const deleteUser = async (req, res) => {
     handlerHttp(res, (!error ? 'Error delete user' : error.message))
   }
 }
-module.exports = { getUser, getUsers, updateUser, deleteUser, updateUserProfileImage }
+module.exports = { getUser, getUsers, updateUser, deleteUser, updateUserProfileImage, searchUsers }
