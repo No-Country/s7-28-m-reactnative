@@ -1,17 +1,18 @@
 const formatDate = () => {
-  const fecha = new Date()
-  const nombresDiasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+  const date = new Date()
+  const weekDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 
-  const diaSemana = nombresDiasSemana[fecha.getDay()]
-  const dia = fecha.getDate()
-  const mes = fecha.getMonth() + 1
-  const hora = fecha.getHours()
-  const minutos = fecha.getMinutes()
+  const weekDay = weekDays[date.getDay()]
+  const day = date.getDate()
+  const month = date.getMonth() + 1
+  const hour = date.getHours()
+  const minutes = date.getMinutes()
 
-  const formattedFecha = `${diaSemana} ${dia}/${mes} a las ${hora}:${minutos}hs`
-
-  console.log(formattedFecha)
-  return formattedFecha
+  return {
+    day: `${weekDay}`,
+    date: `${day}/0${month}`,
+    hour: `${hour}:${minutes}`
+  }
 }
 
 module.exports = { formatDate }

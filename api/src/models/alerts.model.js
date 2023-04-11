@@ -5,7 +5,7 @@ const AlertSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
   ubication: { type: String },
   reason: { type: String },
-  time: { type: String, default: new Date() }
+  time: { type: Object }
 }, {
   timestamps: false, versionKey: false
 })
