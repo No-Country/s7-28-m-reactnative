@@ -25,7 +25,8 @@ const getUsers = async (req, res) => {
 const searchUsers = async (req, res) => {
   try {
     const { query } = req.params
-    const response = await getUsersByEmail(query)
+    const email = req.user
+    const response = await getUsersByEmail(query, email)
     res.status(200).send(response)
   } catch (error) {
     handlerHttp(res, (!error ? 'Error cannot get User' : error.message))
