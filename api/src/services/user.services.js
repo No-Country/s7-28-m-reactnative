@@ -12,8 +12,15 @@ const findAllUsers = async (id) => {
   if (!resUser) { throw new Error('User not found') }
   return resUser
 }
-const getUsersByEmail = async (query) => {
-  const resUsers = await UserModel.find({ email: { $regex: `^${query}`, $options: 'i' } }).select('-password -contacts -createdAt -updatedAt -receivedAlerts -sendAlerts')
+const getUsersByEmail = async (query, userEmail) => {
+  const resUsers = await UserModel
+    .find({
+      $and: [
+        { email: { $regex: `^${query}`, $options: 'i' } },
+        { email: { $ne: userEmail } } // evitar devolver el  email del usuario logeado
+      ]
+    })
+    .select('-password -contacts -createdAt -updatedAt -receivedAlerts -sendAlerts')
   if (!resUsers || !resUsers.length) { throw new Error(`No emails were found starting with: ${query}`) }
   return resUsers
 }
