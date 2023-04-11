@@ -39,14 +39,7 @@ API URL:https://alwaysalert.onrender.com/
     </td>
   </tr>
   <tr>
-    <td>
-      <div align="center">
-        <a href="https://www.linkedin.com/in/lucasabbona" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFhjVnC3AaWIg/profile-framedphoto-shrink_400_400/0/1670123212403?e=1680040800&v=beta&t=_1T7U3-xbUS249In5TqRY-WnANXnArZKro6SoTcIdko"/>
-        </a>
-        <h4 style="margin-top: 1rem;">Lucas Abbona</h4>
-      </div>
-    </td>
+    
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/crismar-silva" target="_blank" rel="author">
@@ -65,14 +58,7 @@ API URL:https://alwaysalert.onrender.com/
     </td>
   </tr>
   <tr>
-    <td>
-      <div align="center">
-        <a href="https://www.linkedin.com/in/crissxp76/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D03AQFvRjz6zhrnPQ/profile-displayphoto-shrink_400_400/0/1677104190223?e=1684972800&v=beta&t=VI22hLLSo-8YsmknkZdR7Rexh67p0as-JU6RIMLFhI4"/>
-        </a>
-        <h4 style="margin-top: 1rem;">Cristhian Paez</h4>
-      </div>
-    </td>
+   
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/raulereno/" target="_blank" rel="author">
