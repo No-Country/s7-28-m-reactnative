@@ -117,4 +117,3 @@ npm run dev
 ## 📄 Licencia
 
 [MIT](https://opensource.org/licenses/MIT)
-
