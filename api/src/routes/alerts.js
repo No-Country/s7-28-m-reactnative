@@ -39,6 +39,13 @@ router.get('/', checkJwt, getAllAlertsController)
  *   post:
  *     tags:
  *       - Alerts
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     requestBody:
  *       description: Objeto JSON que contiene el modo de la alerta
  *       required: true
@@ -47,21 +54,13 @@ router.get('/', checkJwt, getAllAlertsController)
  *           schema:
  *             type: object
  *             properties:
- *               email:
- *                 type: string
- *                 description: El modo de la alerta
- *                 example: test@gmail.com
  *               ubication:
- *                  type: string
- *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
- *                  example: definir
- *               date:
  *                  type: string
  *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
  *                  example: definir
  *               reason:
  *                  type: string
- *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
+ *                  descrition: Estoy en peligro o estoy bien
  *                  example: definir
  *     responses:
  *       200:

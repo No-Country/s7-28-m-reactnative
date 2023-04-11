@@ -4,6 +4,7 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String },
   phoneNumber: { type: String },
+  expoToken: { type: String, default: '' },
   profileImage: {
     type: Object,
     default: {
