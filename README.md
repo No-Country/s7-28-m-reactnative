@@ -39,7 +39,6 @@ API URL:https://alwaysalert.onrender.com/
     </td>
   </tr>
   <tr>
-    
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/crismar-silva" target="_blank" rel="author">
@@ -51,22 +50,21 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/lauti-santillan" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGBks8iHtt2lA/profile-framedphoto-shrink_400_400/0/1670273115922?e=1680040800&v=beta&t=YJAn2LMsYzIhDBh71rFGbgUklQZ48AZeESGI43VbiQo"/>
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGBks8iHtt2lA/profile-displayphoto-shrink_400_400/0/1670273115922?e=1680040800&v=beta&t=YJAn2LMsYzIhDBh71rFGbgUklQZ48AZeESGI43VbiQo"/>
         </a>
         <h4 style="margin-top: 1rem;">Lautaro Santillan</h4>
       </div>
     </td>
-  </tr>
-  <tr>
-   
     <td>
       <div align="center">
-        <a href="https://www.linkedin.com/in/raulereno/" target="_blank" rel="author">
+        <a href="https://www.linkedin.com/in/raulereno" target="_blank" rel="author">
           <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGGq-Lf7WAyhQ/profile-framedphoto-shrink_400_400/0/1663895212481?e=1680040800&v=beta&t=OpAAgxsA1UKZXuDkfctXyKqWGLKFAO_JSo2TK4V3VKU"/>
         </a>
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
       </div>
     </td>
+  </tr>
+  <tr>
      <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
@@ -119,3 +117,4 @@ npm run dev
 ## 📄 Licencia
 
 [MIT](https://opensource.org/licenses/MIT)
+
