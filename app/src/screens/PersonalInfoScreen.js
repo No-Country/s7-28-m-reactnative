@@ -1,23 +1,115 @@
 import { View, Text, Image, TouchableOpacity, TextInput, Button } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from '@expo/vector-icons/Ionicons'
+import axios from 'axios'
+import { BASE_URL } from '@env'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import * as ImagePicker from 'expo-image-picker'
+import Toast from 'react-native-toast-message'
 
-const PersonalInfoScreen = ({ navigation }) => {
+const PersonalInfoScreen = ({ navigation, route }) => {
+  const [token, setToken] = useState('')
   const [InputEmail, SetInputEmail] = useState(false)
   const [InputTelefono, SetInputTelefono] = useState(false)
   const [InputContraseña, SetInputContraseña] = useState(false)
-  const [ChangeImage, setChangeImage] = useState(false)
+  const [image, setImage] = useState(null)
+
+  const formData = {
+    email: InputEmail,
+    phoneNumber: InputTelefono,
+    password: InputContraseña,
+    profileImage: image
+  }
+
+  useEffect(() => {
+    const handleGetToken = async () => {
+      const dataToken = await AsyncStorage.getItem('AccessToken')
+      if (dataToken) {
+        setToken(dataToken)
+      } else {
+        console.log('No existe el token')
+      }
+    }
+
+    handleGetToken()
+  }, [token])
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [10, 10],
+      quality: 1
+    })
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri)
+    }
+  }
+
+  const showToastOK = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Perfil actualizado con éxito'
+    })
+  }
+
+  const showToastNO = () => {
+    Toast.show({
+      type: 'error',
+      text1: 'Ocurrió un error, intente de nuevo'
+    })
+  }
+
+  const updateUserProfile = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+
+    axios.put(BASE_URL + 'users', formData, config)
+      .then(function (response) {
+        if (response.status === 201) {
+          showToastOK()
+          navigation.goBack()
+        }
+      })
+      .catch(function (error) {
+        showToastNO()
+        console.log(error.response.data)
+      })
+  }
 
   return (
     <SafeAreaView>
       <View className='w-full flex items-center h-72 justify-center bg-appbluelight'>
         <View>
           <View className='rounded-full overflow-hidden w-32 h-32'>
-            <Image source={require('../../images/avatar.png')} className='object-cover' />
+            {image
+              ? (
+                <Image
+                  style={{
+                    width: 130,
+                    height: 130,
+                    resizeMode: 'cover'
+                  }}
+                  className='rounded-full'
+                  source={{
+                    uri: image
+                  }}
+                />
+                )
+              : (
+                <View className='flex justify-center items-center'>
+                  <Ionicons
+                    name='person-circle-outline'
+                    size={130}
+                  />
+                </View>
+                )}
           </View>
 
-          <TouchableOpacity onPress={() => setChangeImage(prev => !prev)} className='absolute bottom-0 right-0 bg-appwhite p-2 rounded-full'>
+          <TouchableOpacity onPress={() => pickImage()} className='absolute bottom-0 right-0 bg-appwhite p-2 rounded-full'>
             <Ionicons
               name='pencil-outline'
               size={20}
@@ -25,14 +117,14 @@ const PersonalInfoScreen = ({ navigation }) => {
             />
           </TouchableOpacity>
         </View>
-        <Text className='text-xl font-bold mt-3'>Mariana Romero</Text>
-        <Text className='text-appdarkgrey mt-4'>marianar@gmail.com</Text>
+        <Text className='text-xl font-bold mt-3'>Nombre Apellido</Text>
+        <Text className='mt-2 text-appblack'>{route.params.email}</Text>
       </View>
       <View className='gap-3 mt-5 px-5'>
         <View className='flex flex-row justify-between w-full px-2 border-b py-2 border-appgray'>
           <View className='flex flex-row gap-5'>
             <Text className='text-lg font-semibold'>Email</Text>
-            {InputEmail ? <TextInput className='w-3/5' placeholder='Nuevo Email' /> : <Text className='text-lg font-light'>marianar@gmail.com</Text>}
+            {InputEmail ? <TextInput className='w-3/5' placeholder='Nuevo Email' /> : <Text className='text-lg font-light'>{route.params.email}</Text>}
           </View>
           <TouchableOpacity onPress={() => SetInputEmail(prev => !prev)}>
             <Ionicons
@@ -45,7 +137,7 @@ const PersonalInfoScreen = ({ navigation }) => {
         <View className='flex flex-row justify-between w-full px-2 border-b py-2 border-appgray'>
           <View className='flex flex-row gap-5'>
             <Text className='text-lg font-semibold'>Telefono</Text>
-            {InputTelefono ? <TextInput className='w-3/5' placeholder='Nuevo Telefono' /> : <Text className='text-lg font-light'>+54 911 356985625</Text>}
+            {InputTelefono ? <TextInput className='w-3/5' placeholder='Nuevo Telefono' /> : <Text className='text-lg font-light'>{route.params.phoneNumber}</Text>}
           </View>
           <TouchableOpacity onPress={() => SetInputTelefono(prev => !prev)}>
             <Ionicons
@@ -70,7 +162,7 @@ const PersonalInfoScreen = ({ navigation }) => {
         <Button
           title='Guardar'
           color='#4994C2'
-          onPress={() => navigation.navigate('Perfil')}
+          onPress={() => updateUserProfile()}
         />
       </View>
     </SafeAreaView>

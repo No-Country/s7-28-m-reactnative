@@ -1,10 +1,11 @@
 import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const ProfileScreen = ({ navigation }) => {
+  const [allDataUser, setAllDataUser] = useState('')
   const [Modal, SetModal] = useState(false)
 
   const handleRemoveToken = async () => {
@@ -16,6 +17,19 @@ const ProfileScreen = ({ navigation }) => {
         console.log(error)
       })
   }
+
+  useEffect(() => {
+    const handleGetInfo = async () => {
+      const dataUser = await AsyncStorage.getItem('dataUser')
+      if (dataUser) {
+        setAllDataUser(JSON.parse(dataUser))
+      } else {
+        console.log('No se encontró el user')
+      }
+    }
+
+    handleGetInfo()
+  }, [])
 
   return (
     <SafeAreaView>
@@ -42,14 +56,34 @@ const ProfileScreen = ({ navigation }) => {
       </View>
       <View className=' w-full flex items-center'>
         <View className='w-32 h-32 flex rounded-full overflow-hidden'>
-          <Image className=' object-cover ' source={require('../../images/avatar.png')} />
+          {allDataUser?.profileImage
+            ? (
+              <Image
+                style={{
+                  width: 130,
+                  height: 130,
+                  resizeMode: 'cover'
+                }}
+                source={{
+                  uri: allDataUser.profileImage?.url
+                }}
+              />
+              )
+            : (
+              <View className='flex justify-center items-center'>
+                <Ionicons
+                  name='person-circle-outline'
+                  size={110}
+                />
+              </View>
+              )}
         </View>
 
-        <Text className='text-xl font-bold mt-2'>Mariana Romero</Text>
-        <Text className=' text-appdarkgrey mt-2'>marianar@gmail.com</Text>
+        <Text className='text-xl font-bold mt-4'>Nombre Apellido</Text>
+        <Text className='mt-2 text-appblack'>{allDataUser.email}</Text>
       </View>
       <View className='w-full flex items-start pl-10 mt-10'>
-        <TouchableOpacity onPress={() => navigation.navigate('PersonalInfo')} className='h-20 flex flex-row items-center gap-5 border-b w-full border-appbluelight'>
+        <TouchableOpacity onPress={() => navigation.navigate('PersonalInfo', allDataUser)} className='h-20 flex flex-row items-center gap-5 border-b w-full border-appbluelight'>
           <Ionicons
             name='person-circle-outline'
             size={30}
