@@ -243,7 +243,7 @@ const ContactsScreen = () => {
                     )
               )
             : (
-                myContacts.length > 0 || active === 2
+                myContacts.length || active === 2
                   ? (
                     <ScrollView className='pt-2 bg-appbluelight w-full'>
                       {myContacts.map((c) => (
