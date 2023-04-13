@@ -25,13 +25,12 @@ const getUserSendAlertController = async (req, res) => {
 
 const getAllReceivedUserAlertController = async (req, res) => {
   const email = req.user
-
   try {
     const alerts = await getAllReceivedUserAlert(email)
 
     res.status(200).send({ status: 'success', data: alerts })
   } catch (error) {
-    res.status(404).send({ status: 'error', message: error })
+    res.status(404).send({ status: 'error', message: error.message })
   }
 }
 
