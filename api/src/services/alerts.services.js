@@ -1,5 +1,6 @@
 const AlertModel = require('../models/alerts.model')
 const UserModel = require('../models/user.model')
+const { verifyTokensContacts } = require('../utils/sendNotifications')
 
 const getAllAlert = async () => {
   const alerts = await AlertModel.find()
@@ -28,8 +29,10 @@ const createAlert = async (alert, email) => {
   let user
 
   try {
-    user = await UserModel.findOne({ email })
+    user = await UserModel.findOne({ email }).populate('contacts')
     result = await AlertModel.create({ ...alert, userId: user._id })
+
+    verifyTokensContacts(user, result)
   } catch (error) {
     console.log(error)
   }
