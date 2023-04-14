@@ -1,6 +1,8 @@
 import { Animated, FlatList, View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import axios from 'axios'
+import { BASE_URL } from '@env'
 import Slides from './data'
 import SlideItem from './SlideItem'
 import Pagination from './Pagination'
@@ -8,6 +10,24 @@ import Pagination from './Pagination'
 const Slider = ({ navigation }) => {
   const [index, setIndex] = useState(0)
   const scrollX = useRef(new Animated.Value(0)).current
+
+  const WakeUp = async (data) => {
+    await axios.post(BASE_URL, {
+    })
+      .then(function (response) {
+        console.log(response)
+        if (response.status === 200) {
+          console.log(response.data)
+        }
+      })
+      .catch(function (error) {
+        console.log(error.response.data)
+      })
+  }
+
+  useEffect(() => {
+    WakeUp()
+  }, [])
 
   const handleOnScroll = event => {
     Animated.event(

@@ -1,6 +1,7 @@
-import { Platform, alert } from 'react-native'
+import { Platform, Alert } from 'react-native'
 import * as Device from 'expo-device'
 import * as Notifications from 'expo-notifications'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,13 +21,14 @@ export async function registerForPushNotificationsAsync () {
       finalStatus = status
     }
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!')
+      Alert('Failed to get push token for push notification!')
       return
     }
     token = (await Notifications.getExpoPushTokenAsync()).data
-    console.log(token)
+    AsyncStorage.setItem('ExpoToken', token)
+    AsyncStorage.setItem('dataUser', JSON.stringify(token))
   } else {
-    alert('Must use physical device for Push Notifications')
+    Alert('Must use physical device for Push Notifications')
   }
 
   if (Platform.OS === 'android') {

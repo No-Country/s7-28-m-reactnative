@@ -40,7 +40,7 @@ function NotificationsOut () {
         if (item.reason === 'Ayuda Estoy en peligro!') {
           return (
             <View key={i}>
-              <Text className='pb-2 text-sm'>{item.createdAt}</Text>
+              <Text className='pb-2 text-sm'>{item.time?.day} {item.time?.date} a las {item.time?.hour}</Text>
               <View className='flex-row bg-appgray  rounded-lg border-b-2 border-appblue pl-2 py-1 mb-4'>
                 <View>
                   <View>
@@ -54,7 +54,7 @@ function NotificationsOut () {
         } else if (item.reason === 'Llegue bien!') {
           return (
             <View key={i}>
-              <Text className='pb-2 text-sm'>{item.createdAt}</Text>
+              <Text className='pb-2 text-sm'>{item.time?.day} {item.time?.date} a las {item.time?.hour}</Text>
               <View className='flex-row bg-appgray  rounded-lg border-b-2 border-appblue mb-4'>
                 <View>
                   <Text className='text-appgreen text-base font-semibold my-3 pl-2 w-56'>Tus contactos ya saben que llegaste bien</Text>
@@ -63,6 +63,9 @@ function NotificationsOut () {
             </View>
           )
         }
+        return (
+          <View key={i} />
+        )
       })}
     </View>
   )

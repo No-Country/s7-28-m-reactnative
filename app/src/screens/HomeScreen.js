@@ -2,10 +2,13 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { registerForPushNotificationsAsync } from '../components/home/NotificationHome'
+import useExpoToken from '../Hook/useExpoToken'
 
 const HomeScreen = ({ navigation, onSubmit, handlereachgodalert }) => {
+  const { handleExpoToken } = useExpoToken()
   useEffect(() => {
     registerForPushNotificationsAsync()
+    handleExpoToken()
   }, [])
 
   return (
