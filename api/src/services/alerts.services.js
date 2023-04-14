@@ -32,7 +32,7 @@ const createAlert = async (alert, email) => {
   let user
 
   try {
-    user = await UserModel.findOne({ email }).populate('contacts')
+    user = await UserModel.findOne({ email }).populate({ path: 'contacts', select: '-password' })
     result = await AlertModel.create({ ...alert, userId: user._id })
 
     verifyTokensContacts(user, result)
