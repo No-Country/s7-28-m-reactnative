@@ -1,6 +1,6 @@
 const Router = require('express')
 const {
-  getAllAlertsController,
+
   createAlertController,
   getOneAlertController,
   getUserSendAlertController,
@@ -10,13 +10,19 @@ const { checkJwt } = require('../middlewares/authValidateSession')
 
 const router = Router()
 /**
- * @openapi
+ *
  * /alerts:
  *   get:
 
  *     tags:
  *       - Alerts
- *
+ *     parameters:
+ *       -  in: header
+ *          name: Jwt Token
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Token generado por jwt
  *     responses:
  *       200:
  *         description: OK
@@ -26,12 +32,8 @@ const router = Router()
  *               type: array
  *               properties:
  */
-router.get('/', checkJwt, getAllAlertsController)
 
-// * email: { type: String, required: true, unique: true },
-//   ubication: { type: String },
-//   date: { type: String },
-//   reason: { type: String }
+// router.get('/', checkJwt, getAllAlertsController)
 
 /**
  * @openapi
@@ -56,27 +58,50 @@ router.get('/', checkJwt, getAllAlertsController)
  *             properties:
  *               ubication:
  *                  type: string
- *                  descrition: Ubicación en latitud y longitud desde donde se lanza la alerta
- *                  example: definir
+ *                  description: Ubicación en latitud y longitud desde donde se lanza la alerta
+ *                  example: https://www.google.com/maps/search/?api=1&query={longitude},{latitude}
  *               reason:
  *                  type: string
- *                  descrition: Estoy en peligro o estoy bien
- *                  example: definir
+ *                  description: Estoy en peligro o estoy bien
+ *                  example: Ayuda, estoy en peligro
  *     responses:
  *       200:
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               type: array
+ *               type: object
  *               properties:
  *                 status:
  *                   type: string
- *                   example: OK
+ *                   example: success
  *                 data:
- *                   type: array
- *                   items:
- *                     type: object
+ *                   type: object
+ *                   properties:
+ *                     userId:
+ *                       type: string
+ *                       example: 643757fda8ec38388546eb0f
+ *                     ubication:
+ *                       type: string
+ *                       example: https://www.google.com/maps/search/?api=1&query={longitude},{latitude}
+ *                     reason:
+ *                       type: string
+ *                       example: Ayuda, estoy en peligro
+ *                     _id:
+ *                       type: string
+ *                       example: 643951782c2a4fd48258dd1c
+ *                     time:
+ *                       type: object
+ *                       properties:
+ *                         day:
+ *                           type: string
+ *                           example: Viernes
+ *                         date:
+ *                           type: string
+ *                           example: 14/04
+ *                         hour:
+ *                           type: string
+ *                           example: 10:13
  */
 router.post('/', checkJwt, createAlertController)
 /**
@@ -92,13 +117,12 @@ router.post('/', checkJwt, createAlertController)
  *            type: string
  *          required: true
  *          description: Token generado por jwt
- *       -  in: params
+ *       -  in: path
  *          name: Alert Id
  *          schema:
  *            type: string
  *          required: true
  *          description: ID del alerta
- *
  *     responses:
  *       200:
  *         description: OK
@@ -109,11 +133,34 @@ router.post('/', checkJwt, createAlertController)
  *               properties:
  *                 status:
  *                   type: string
- *                   example: OK
+ *                   example: success
  *                 data:
- *                   type: array
- *                   items:
- *                     type: object
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                       example: 643631d22a4e413d0bc18d24
+ *                     userId:
+ *                       type: string
+ *                       example: 643596859ec526a39afe04c0
+ *                     ubication:
+ *                       type: string
+ *                       example: https://www.google.com/maps/search/?api=1&query={longitude},{latitude}
+ *                     reason:
+ *                       type: string
+ *                       example: Ayuda Estoy en peligro!
+ *                     time:
+ *                       type: object
+ *                       properties:
+ *                         day:
+ *                           type: string
+ *                           example: Miércoles
+ *                         date:
+ *                           type: string
+ *                           example: 12/04
+ *                         hour:
+ *                           type: string
+ *                           example: 4:21
  */
 router.get('/:id', checkJwt, getOneAlertController)
 
@@ -140,17 +187,39 @@ router.get('/:id', checkJwt, getOneAlertController)
  *               properties:
  *                 status:
  *                   type: string
- *                   example: OK
+ *                   example: success
  *                 data:
  *                   type: array
  *                   items:
  *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                         example: 643578dcfbfa212a2a880038
+ *                       userId:
+ *                         type: string
+ *                         example: 642dd81286c8f7ed5a8b7c5c
+ *                       ubication:
+ *                         type: string
+ *                         example: https://www.google.com/maps/search/?api=1&query={longitude},{latitude}
+ *                       reason:
+ *                         type: string
+ *                         example: Ayuda, estoy en peligro
+ *                       time:
+ *                         type: object
+ *                         properties:
+ *                           day:
+ *                             type: string
+ *                             example: Martes 11/4
+ *                           hour:
+ *                             type: string
+ *                             example: 12:12hs
  */
 router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
 
 /**
  * @openapi
- * /alerts/user/receivedalert:
+ * /alerts/user/receivedalerts:
  *   get:
  *     tags:
  *       - Alerts
@@ -171,11 +240,45 @@ router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
  *               properties:
  *                 status:
  *                   type: string
- *                   example: OK
+ *                   example: success
  *                 data:
  *                   type: array
  *                   items:
  *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                         example: 64360b0cdacf223c1105f852
+ *                       userId:
+ *                         type: object
+ *                         properties:
+ *                           _id:
+ *                             type: string
+ *                             example: 642cb5a6002cf16e5066bceb
+ *                           email:
+ *                             type: string
+ *                             example: pepe2@yopmail.com
+ *                           profileImage:
+ *                             type: string
+ *                             example: https://static.wikia.nocookie.net/casados-con-hijos-ar/images/1/17/Pepe-argento.jpg/revision/latest/scale-to-width-down/250?cb=20160119025046&path-prefix=es
+ *                           phoneNumber:
+ *                             type: string
+ *                             example: 12345678
+ *                       reason:
+ *                         type: string
+ *                         example: Llegue bien!
+ *                       time:
+ *                         type: object
+ *                         properties:
+ *                           day:
+ *                             type: string
+ *                             example: Miércoles
+ *                           date:
+ *                             type: string
+ *                             example: 12/04
+ *                           hour:
+ *                             type: string
+ *                             example: 1:36
  */
 router.get('/user/receivedalerts', checkJwt, getAllReceivedUserAlertController)
 
