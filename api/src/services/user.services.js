@@ -2,8 +2,8 @@
 const UserModel = require('../models/user.model')
 const { deleteImage } = require('../utils/cloudinary')
 
-const findUser = async (id) => {
-  const resUser = await UserModel.findById(id)
+const findUser = async (email) => {
+  const resUser = await UserModel.findOne({ email }).select('-password -updatedAt')
   if (!resUser) { throw new Error('User not found') }
   return resUser
 }

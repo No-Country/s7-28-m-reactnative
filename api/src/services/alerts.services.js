@@ -18,7 +18,10 @@ const getAllSendUserAlert = async (email) => {
 const getAllReceivedUserAlert = async (email) => {
   const user = await UserModel.findOne({ email }).populate({
     path: 'receivedAlerts',
-    populate: 'users'
+    populate: {
+      path: 'userId',
+      select: '-password -createdAt -contacts -updatedAt -receivedAlerts -sendAlerts -expoToken'
+    }
   })
 
   return user.receivedAlerts
