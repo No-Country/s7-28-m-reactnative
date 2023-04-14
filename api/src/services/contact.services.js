@@ -4,7 +4,7 @@ const getUserContacts = async (userEmail) => {
   try {
     const user = await UserModel.findOne({ email: userEmail }).populate({
       path: 'contacts',
-      select: '-password -contacts -createdAt -updatedAt'
+      select: 'email profileImage username phoneNumber'
     })
     if (!user) { throw new Error('User not found') }
     return user.contacts
@@ -21,7 +21,11 @@ const addContact = async (userEmail, newContactId) => {
       user._id,
       { $push: { contacts: newContactId } },
       { new: true })
-    return updatedUser
+    const { contacts } = await updatedUser.populate({
+      path: 'contacts',
+      select: 'email profileImage'
+    })
+    return contacts
   } catch (error) {
     return error.message
   }
@@ -36,7 +40,11 @@ const deleteContact = async (userEmail, contactId) => {
       { $pull: { contacts: contactId } },
       { new: true })
     if (!updatedUser) { throw new Error('Contact could not be deleted') }
-    return updatedUser
+    const { contacts } = await updatedUser.populate({
+      path: 'contacts',
+      select: 'email profileImage'
+    })
+    return contacts
   } catch (error) {
     return error.message
   }
