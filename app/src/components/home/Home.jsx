@@ -12,7 +12,6 @@ const Home = ({ navigation }) => {
     await AsyncStorage.getItem('AccessToken')
       .then(function (response) {
         setToken(response)
-        // showToast()
       })
       .catch(function (error) {
         console.log(error)

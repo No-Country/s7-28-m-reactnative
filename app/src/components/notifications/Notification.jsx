@@ -8,7 +8,7 @@ import NotificationsOut from './NotificationsOut'
 const Notification = () => {
   const [active, setActive] = useState(1)
   const [user] = useState({
-    notificaion1: false,
+    notificaion1: 2,
     notificaion2: 1
 
   })

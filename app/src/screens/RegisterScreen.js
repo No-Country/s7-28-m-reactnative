@@ -15,7 +15,7 @@ const Register = ({ navigation }) => {
   const onSubmit = async (data) => {
     await axios.post(BASE_URL + 'users/register', {
       email: data.email,
-      phone: data.phone,
+      phoneNumber: data.phone,
       password: data.password
     })
       .then(function (response) {
