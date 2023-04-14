@@ -117,7 +117,7 @@ router.post('/', checkJwt, createAlertController)
  *            type: string
  *          required: true
  *          description: Token generado por jwt
- *       -  in: params
+ *       -  in: path
  *          name: Alert Id
  *          schema:
  *            type: string
@@ -131,13 +131,36 @@ router.post('/', checkJwt, createAlertController)
  *             schema:
  *               type: object
  *               properties:
- *                 token:
+ *                 status:
  *                   type: string
- *                   example: OK
+ *                   example: success
  *                 data:
- *                   type: array
- *                   items:
- *                     type: object
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                       example: 643631d22a4e413d0bc18d24
+ *                     userId:
+ *                       type: string
+ *                       example: 643596859ec526a39afe04c0
+ *                     ubication:
+ *                       type: string
+ *                       example: https://www.google.com/maps/search/?api=1&query={longitude},{latitude}
+ *                     reason:
+ *                       type: string
+ *                       example: Ayuda Estoy en peligro!
+ *                     time:
+ *                       type: object
+ *                       properties:
+ *                         day:
+ *                           type: string
+ *                           example: Miércoles
+ *                         date:
+ *                           type: string
+ *                           example: 12/04
+ *                         hour:
+ *                           type: string
+ *                           example: 4:21
  */
 router.get('/:id', checkJwt, getOneAlertController)
 
@@ -196,7 +219,7 @@ router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
 
 /**
  * @openapi
- * /alerts/user/receivedalert:
+ * /alerts/user/receivedalerts:
  *   get:
  *     tags:
  *       - Alerts
@@ -217,11 +240,45 @@ router.get('/user/sendalerts', checkJwt, getUserSendAlertController)
  *               properties:
  *                 status:
  *                   type: string
- *                   example: OK
+ *                   example: success
  *                 data:
  *                   type: array
  *                   items:
  *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                         example: 64360b0cdacf223c1105f852
+ *                       userId:
+ *                         type: object
+ *                         properties:
+ *                           _id:
+ *                             type: string
+ *                             example: 642cb5a6002cf16e5066bceb
+ *                           email:
+ *                             type: string
+ *                             example: pepe2@yopmail.com
+ *                           profileImage:
+ *                             type: string
+ *                             example: https://static.wikia.nocookie.net/casados-con-hijos-ar/images/1/17/Pepe-argento.jpg/revision/latest/scale-to-width-down/250?cb=20160119025046&path-prefix=es
+ *                           phoneNumber:
+ *                             type: string
+ *                             example: 12345678
+ *                       reason:
+ *                         type: string
+ *                         example: Llegue bien!
+ *                       time:
+ *                         type: object
+ *                         properties:
+ *                           day:
+ *                             type: string
+ *                             example: Miércoles
+ *                           date:
+ *                             type: string
+ *                             example: 12/04
+ *                           hour:
+ *                             type: string
+ *                             example: 1:36
  */
 router.get('/user/receivedalerts', checkJwt, getAllReceivedUserAlertController)
 
