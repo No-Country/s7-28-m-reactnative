@@ -30,7 +30,11 @@ const updateProfile = async (data, email) => {
   return resUpdatedUser
 }
 const updateProfileImage = async (profileImage, email) => {
-  const resUpdatedUserImage = await UserModel.findOneAndUpdate({ email }, { profileImage }, { new: true })
+  const resUpdatedUserImage = await UserModel.findOneAndUpdate(
+    { email },
+    { profileImage },
+    { new: true, select: '-password -expoToken -updatedAt' }
+  )
   if (!resUpdatedUserImage) { return 'User not founded' }
   return resUpdatedUserImage
 }
