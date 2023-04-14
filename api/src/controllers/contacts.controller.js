@@ -8,7 +8,7 @@ const getContacts = async (req, res) => {
     if (response === 'User not found') {
       return res.status(404).json({ error: response })
     }
-    res.status(201).send(response)
+    res.status(200).send(response)
   } catch (error) {
     handlerHttp(res, (!error ? 'Error getting contacts' : error.message))
   }
