@@ -243,19 +243,31 @@ router.delete('/', checkJwt, deleteUser)
  *          description: Token generado por jwt
  *     responses:
  *       200:
- *         description: OK
+ *         description: Obtiene una lista con todos los contactos del usuario logueado
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
  *                   type: array
  *                   items:
  *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                       email:
+ *                         type: string
+ *                       profileImage:
+ *                         type: object
+ *                         properties:
+ *                           url:
+ *                             type: string
+ *                     example:
+ *                       _id: "642cb3b729fa00c5d7c7f131"
+ *                       email: "andres@gmail.com"
+ *                       profileImage:
+ *                         url: "https://randomuser.me/api/portraits/women/26.jpg"
+ *                       phoneNumber: "+54 9 11111111"
+ *                       username: "andres"
+ *
  */
 router.get('/contacts', checkJwt, getContacts)
 /**
@@ -266,26 +278,45 @@ router.get('/contacts', checkJwt, getContacts)
  *       - Users
  *     parameters:
  *       -  in: header
- *          name: Jwt Token
+ *          name: Authorization
  *          schema:
  *            type: string
  *          required: true
  *          description: Token generado por jwt
+ *       -  in: body
+ *          name: newContactId
+ *          schema:
+ *            type: object
+ *            properties:
+ *              newContactId:
+ *                type: string
+ *          required: true
+ *          description: Identificador del nuevo contacto a agregar
  *     responses:
- *       200:
- *         description: OK
+ *       201:
+ *         description: Devuelve la lista de contactos actualizada con el nuevo contacto
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
  *                   type: array
  *                   items:
  *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                       email:
+ *                         type: string
+ *                       profileImage:
+ *                         type: object
+ *                         properties:
+ *                           url:
+ *                             type: string
+ *                     example:
+ *                       _id: "642cb3b729fa00c5d7c7f131"
+ *                       email: "andres@gmail.com"
+ *                       profileImage:
+ *                         url: "https://randomuser.me/api/portraits/women/26.jpg"
+ *
  */
 router.post('/contacts', checkJwt, newContact)
 /**
@@ -296,26 +327,45 @@ router.post('/contacts', checkJwt, newContact)
  *       - Users
  *     parameters:
  *       -  in: header
- *          name: Jwt Token
+ *          name: Authorization
  *          schema:
  *            type: string
  *          required: true
  *          description: Token generado por jwt
+ *       -  in: body
+ *          name: contactId
+ *          schema:
+ *            type: object
+ *            properties:
+ *              contactId:
+ *                type: string
+ *          required: true
+ *          description: Identificador del contacto a eliminar
  *     responses:
- *       200:
- *         description: OK
+ *       202:
+ *         description: Devuelve la lista de contactos actualizada sin el contacto eliminado
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
  *                   type: array
  *                   items:
  *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                       email:
+ *                         type: string
+ *                       profileImage:
+ *                         type: object
+ *                         properties:
+ *                           url:
+ *                             type: string
+ *                     example:
+ *                       _id: "642cb3b729fa00c5d7c7f131"
+ *                       email: "andres@gmail.com"
+ *                       profileImage:
+ *                         url: "https://randomuser.me/api/portraits/women/26.jpg"
+ *
  */
 router.delete('/contacts', checkJwt, removeContact)
 module.exports = { router }
