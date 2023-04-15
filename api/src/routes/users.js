@@ -299,7 +299,7 @@ router.post('/login', loginController)
  *                   items:
  *                     type: object
  */
-router.put('/', checkJwt, updateUser)
+router.patch('/', checkJwt, updateUser)
 /**
  * @openapi
  * /users:
