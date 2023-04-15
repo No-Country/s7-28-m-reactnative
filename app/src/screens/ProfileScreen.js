@@ -79,7 +79,7 @@ const ProfileScreen = ({ navigation }) => {
               )}
         </View>
 
-        <Text className='text-xl font-bold mt-4'>Nombre Apellido</Text>
+        <Text className='text-xl font-bold mt-4'>{allDataUser.username}</Text>
         <Text className='mt-2 text-appblack'>{allDataUser.email}</Text>
       </View>
       <View className='w-full flex items-start pl-10 mt-10'>
