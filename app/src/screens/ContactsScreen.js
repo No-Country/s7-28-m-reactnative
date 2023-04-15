@@ -14,34 +14,34 @@ const ContactsScreen = () => {
   const [contactsSearched, setContactsSearched] = useState('')
   const [text, onChangeText] = React.useState('')
 
+  const handleGetToken = async () => {
+    const dataToken = await AsyncStorage.getItem('AccessToken')
+    if (dataToken) {
+      setToken(dataToken)
+    } else {
+      console.log('No existe el token')
+    }
+  }
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  }
+
+  function fetchMyContacts () {
+    fetch(BASE_URL + 'users/contacts', config)
+      .then((response) => response.json())
+      .then((data) => {
+        setMyContacts(data)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
   useEffect(() => {
-    const handleGetToken = async () => {
-      const dataToken = await AsyncStorage.getItem('AccessToken')
-      if (dataToken) {
-        setToken(dataToken)
-      } else {
-        console.log('No existe el token')
-      }
-    }
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-
-    function fetchMyContacts () {
-      fetch(BASE_URL + 'users/contacts', config)
-        .then((response) => response.json())
-        .then((data) => {
-          setMyContacts(data)
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    }
-
     handleGetToken()
     fetchMyContacts()
-  }, [token, myContacts])
+  }, [token, active])
 
   const showToastOK = () => {
     Toast.show({
@@ -219,38 +219,38 @@ const ContactsScreen = () => {
                   : (
                     <ScrollView className='pt-2 pb-12 bg-appbluelight w-full'>
                       {contactsSearched.map((c) => (
-                        <View key={c._id} className='rounded-lg bg-appbluelight border-b border-b-appblue w-full'>
-                          <View className='flex flex-row items-center justify-center w-full bg-appbluelight py-5' key={c.lookupKey}>
-                            <View className='flex flex-row'>
-                              <View>
-                                {c?.profileImage
-                                  ? (
-                                    <Image
-                                      style={{
-                                        width: 50,
-                                        height: 50,
-                                        resizeMode: 'cover'
-                                      }}
-                                      className='rounded-full'
-                                      source={{
-                                        uri: c.profileImage?.url
-                                      }}
-                                    />
-                                    )
-                                  : (
-                                    <Ionicons
-                                      name='person-circle-outline'
-                                      size={40}
-                                    />
-                                    )}
-                              </View>
-                              <View className='flex flex-row items-center ml-3 w-44'>
-                                <Text className='text-base'>{c.email}</Text>
-                              </View>
+                        <View key={c._id} className='w-full'>
+                          <View className='flex flex-row justify-around items-center bg-appbluelight py-5 border-b border-appblue px-7'>
+                            <View className='flex flex-row items-center gap-x-5'>
+                              {c?.profileImage
+                                ? (
+                                  <Image
+                                    style={{
+                                      width: 50,
+                                      height: 50,
+                                      resizeMode: 'cover'
+                                    }}
+                                    className='rounded-full'
+                                    source={{
+                                      uri: c.profileImage?.url
+                                    }}
+                                  />
+                                  )
+                                : (
+                                  <Ionicons
+                                    name='person-circle-outline'
+                                    size={40}
+                                  />
+                                  )}
+                              <Text className='text-base w-48'>{c.email}</Text>
                             </View>
-                            <View className='p-2 bg-appdarkgrey rounded-lg flex justify-end ml-10'>
-                              <TouchableOpacity onPress={() => addNewContact(c._id)}>
-                                <Text className='text-base'>Agregar</Text>
+                            <View className='flex flex-row gap-x-3'>
+                              <TouchableOpacity onPress={() => addNewContact(c._id)} className='bg-appwhite rounded-full p-1'>
+                                <Ionicons
+                                  name='add-outline'
+                                  size={30}
+                                  color='#72B040'
+                                />
                               </TouchableOpacity>
                             </View>
                           </View>
@@ -326,38 +326,38 @@ const ContactsScreen = () => {
                       ? (
                         <ScrollView className='pt-2 pb-12 bg-appbluelight w-full'>
                           {contactsSearched.map((c) => (
-                            <View key={c._id} className='rounded-lg bg-appbluelight border-b border-b-appblue w-full'>
-                              <View className='flex flex-row items-center justify-center w-full bg-appbluelight py-5' key={c.lookupKey}>
-                                <View className='flex flex-row'>
-                                  <View>
-                                    {c?.profileImage
-                                      ? (
-                                        <Image
-                                          style={{
-                                            width: 50,
-                                            height: 50,
-                                            resizeMode: 'cover'
-                                          }}
-                                          className='rounded-full'
-                                          source={{
-                                            uri: c.profileImage?.url
-                                          }}
-                                        />
-                                        )
-                                      : (
-                                        <Ionicons
-                                          name='person-circle-outline'
-                                          size={40}
-                                        />
-                                        )}
-                                  </View>
-                                  <View className='flex flex-row items-center ml-3 w-44'>
-                                    <Text className='text-base'>{c.email}</Text>
-                                  </View>
+                            <View key={c._id} className='w-full'>
+                              <View className='flex flex-row justify-around items-center bg-appbluelight py-5 border-b border-appblue px-7'>
+                                <View className='flex flex-row items-center gap-x-5'>
+                                  {c?.profileImage
+                                    ? (
+                                      <Image
+                                        style={{
+                                          width: 50,
+                                          height: 50,
+                                          resizeMode: 'cover'
+                                        }}
+                                        className='rounded-full'
+                                        source={{
+                                          uri: c.profileImage?.url
+                                        }}
+                                      />
+                                      )
+                                    : (
+                                      <Ionicons
+                                        name='person-circle-outline'
+                                        size={40}
+                                      />
+                                      )}
+                                  <Text className='text-base w-48'>{c.email}</Text>
                                 </View>
-                                <View className='p-2 bg-appdarkgrey rounded-lg flex justify-end ml-10'>
-                                  <TouchableOpacity onPress={() => addNewContact(c._id)}>
-                                    <Text className='text-base'>Agregar</Text>
+                                <View className='flex flex-row gap-x-3'>
+                                  <TouchableOpacity onPress={() => addNewContact(c._id)} className='bg-appwhite rounded-full p-1'>
+                                    <Ionicons
+                                      name='add-outline'
+                                      size={30}
+                                      color='#72B040'
+                                    />
                                   </TouchableOpacity>
                                 </View>
                               </View>
@@ -386,38 +386,38 @@ const ContactsScreen = () => {
                             : (
                               <ScrollView className='pt-2 pb-12 bg-appbluelight w-full'>
                                 {contactsSearched.map((c) => (
-                                  <View key={c._id} className='rounded-lg bg-appbluelight border-b border-b-appblue w-full'>
-                                    <View className='flex flex-row items-center justify-center w-full bg-appbluelight py-5' key={c.lookupKey}>
-                                      <View className='flex flex-row'>
-                                        <View>
-                                          {c?.profileImage
-                                            ? (
-                                              <Image
-                                                style={{
-                                                  width: 50,
-                                                  height: 50,
-                                                  resizeMode: 'cover'
-                                                }}
-                                                className='rounded-full'
-                                                source={{
-                                                  uri: c.profileImage?.url
-                                                }}
-                                              />
-                                              )
-                                            : (
-                                              <Ionicons
-                                                name='person-circle-outline'
-                                                size={40}
-                                              />
-                                              )}
-                                        </View>
-                                        <View className='flex flex-row items-center ml-3 w-44'>
-                                          <Text className='text-base'>{c.email}</Text>
-                                        </View>
+                                  <View key={c._id} className='w-full'>
+                                    <View className='flex flex-row justify-around items-center bg-appbluelight py-5 border-b border-appblue px-7'>
+                                      <View className='flex flex-row items-center gap-x-5'>
+                                        {c?.profileImage
+                                          ? (
+                                            <Image
+                                              style={{
+                                                width: 50,
+                                                height: 50,
+                                                resizeMode: 'cover'
+                                              }}
+                                              className='rounded-full'
+                                              source={{
+                                                uri: c.profileImage?.url
+                                              }}
+                                            />
+                                            )
+                                          : (
+                                            <Ionicons
+                                              name='person-circle-outline'
+                                              size={40}
+                                            />
+                                            )}
+                                        <Text className='text-base w-48'>{c.email}</Text>
                                       </View>
-                                      <View className='p-2 bg-appdarkgrey rounded-lg flex justify-end ml-10'>
-                                        <TouchableOpacity onPress={() => addNewContact(c._id)}>
-                                          <Text className='text-base'>Agregar</Text>
+                                      <View className='flex flex-row gap-x-3'>
+                                        <TouchableOpacity onPress={() => addNewContact(c._id)} className='bg-appwhite rounded-full p-1'>
+                                          <Ionicons
+                                            name='add-outline'
+                                            size={30}
+                                            color='#72B040'
+                                          />
                                         </TouchableOpacity>
                                       </View>
                                     </View>
@@ -429,9 +429,7 @@ const ContactsScreen = () => {
                 )}
         </View>
       </ScrollView>
-
     </SafeAreaView>
-
   )
 }
 

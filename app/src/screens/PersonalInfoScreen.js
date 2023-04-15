@@ -16,10 +16,10 @@ const PersonalInfoScreen = ({ navigation, route }) => {
   const [image, setImage] = useState(null)
 
   const formData = {
-    email: InputEmail,
-    phoneNumber: InputTelefono,
-    password: InputContraseña,
-    profileImage: image
+    email: InputEmail || route.params.email,
+    phoneNumber: InputTelefono || route.params.phoneNumber,
+    password: InputContraseña || route.params.password,
+    profileImage: image || route.params.profileImage
   }
 
   useEffect(() => {
@@ -69,9 +69,8 @@ const PersonalInfoScreen = ({ navigation, route }) => {
 
     axios.put(BASE_URL + 'users', formData, config)
       .then(function (response) {
-        if (response.status === 201) {
+        if (response.status === 200) {
           showToastOK()
-          navigation.goBack()
         }
       })
       .catch(function (error) {
@@ -117,7 +116,7 @@ const PersonalInfoScreen = ({ navigation, route }) => {
             />
           </TouchableOpacity>
         </View>
-        <Text className='text-xl font-bold mt-3'>Nombre Apellido</Text>
+        <Text className='text-xl font-bold mt-3'>{route.params.username}</Text>
         <Text className='mt-2 text-appblack'>{route.params.email}</Text>
       </View>
       <View className='gap-3 mt-5 px-5'>
