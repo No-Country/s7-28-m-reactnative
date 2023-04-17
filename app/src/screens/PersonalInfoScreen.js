@@ -13,12 +13,12 @@ const PersonalInfoScreen = ({ navigation, route }) => {
   const [InputName, SetInputName] = useState('')
   const [InputTelefono, SetInputTelefono] = useState('')
   const [InputContraseña, SetInputContraseña] = useState('')
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState(route?.params?.profileImage?.url)
 
   const formData = {
-    username: InputName || route?.params?.profileImge.url,
-    phoneNumber: InputTelefono || route.params.phoneNumber,
-    password: InputContraseña || route.params.password
+    username: InputName || route?.params?.username,
+    phoneNumber: InputTelefono || route?.params?.phoneNumber,
+    password: InputContraseña || undefined
   }
 
   useEffect(() => {
@@ -34,19 +34,6 @@ const PersonalInfoScreen = ({ navigation, route }) => {
     handleGetToken()
   }, [token])
 
-  const pickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [10, 10],
-      quality: 1
-    })
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri)
-    }
-  }
-
   const showToastOK = () => {
     Toast.show({
       type: 'success',
@@ -61,7 +48,43 @@ const PersonalInfoScreen = ({ navigation, route }) => {
     })
   }
 
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [10, 10],
+      quality: 1
+    })
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri)
+    }
+  }
+
+  const updateImage = () => {
+    const profileImage = new FormData()
+    profileImage.append('profileImage', {
+      uri: image,
+      name: 'profileImage.png',
+      type: 'image/png'
+    })
+
+    fetch('https://alwaysalert.onrender.com/users/profileImage', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      },
+      body: profileImage
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log(response)
+      }
+    })
+  }
+
   const updateUserProfile = () => {
+    console.log(InputContraseña)
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -69,8 +92,9 @@ const PersonalInfoScreen = ({ navigation, route }) => {
     axios.patch(BASE_URL + 'users', formData, config)
       .then(function (response) {
         if (response.status === 200) {
+          updateImage()
           showToastOK()
-          navigation.navigate('Perfil', { image })
+          navigation.navigate('Perfil')
         }
       })
       .catch(function (error) {

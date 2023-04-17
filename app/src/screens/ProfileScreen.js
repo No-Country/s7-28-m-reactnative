@@ -45,7 +45,7 @@ const ProfileScreen = ({ navigation }) => {
       }
 
       handleGetToken()
-    }, [])
+    }, [allDataUser.profileImage])
   )
 
   return (
@@ -73,7 +73,7 @@ const ProfileScreen = ({ navigation }) => {
       </View>
       <View className=' w-full flex items-center'>
         <View className='w-32 h-32 flex rounded-full overflow-hidden'>
-          {allDataUser?.profileImage
+          {allDataUser?.profileImage?.url
             ? (
               <Image
                 style={{
@@ -90,7 +90,7 @@ const ProfileScreen = ({ navigation }) => {
               <View className='flex justify-center items-center'>
                 <Ionicons
                   name='person-circle-outline'
-                  size={110}
+                  size={130}
                 />
               </View>
               )}
