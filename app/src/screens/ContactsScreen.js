@@ -14,34 +14,34 @@ const ContactsScreen = () => {
   const [contactsSearched, setContactsSearched] = useState('')
   const [text, onChangeText] = React.useState('')
 
+  const handleGetToken = async () => {
+    const dataToken = await AsyncStorage.getItem('AccessToken')
+    if (dataToken) {
+      setToken(dataToken)
+    } else {
+      console.log('No existe el token')
+    }
+  }
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  }
+
+  function fetchMyContacts () {
+    fetch(BASE_URL + 'users/contacts', config)
+      .then((response) => response.json())
+      .then((data) => {
+        setMyContacts(data)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
   useEffect(() => {
-    const handleGetToken = async () => {
-      const dataToken = await AsyncStorage.getItem('AccessToken')
-      if (dataToken) {
-        setToken(dataToken)
-      } else {
-        console.log('No existe el token')
-      }
-    }
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-
-    function fetchMyContacts () {
-      fetch(BASE_URL + 'users/contacts', config)
-        .then((response) => response.json())
-        .then((data) => {
-          setMyContacts(data)
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    }
-
     handleGetToken()
     fetchMyContacts()
-  }, [token, myContacts])
+  }, [token, active])
 
   const showToastOK = () => {
     Toast.show({

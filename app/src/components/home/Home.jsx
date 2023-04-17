@@ -4,6 +4,7 @@ import HomeScreen from '../../screens/HomeScreen'
 import axios from 'axios'
 import { BASE_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import Toast from 'react-native-toast-message'
 
 const Home = ({ navigation }) => {
   const [token, setToken] = React.useState()
@@ -33,6 +34,13 @@ const Home = ({ navigation }) => {
     return (url)
   }
 
+  const showToastOK = () => {
+    Toast.show({
+      type: 'success',
+      text1: '¡Tu alerta fue enviada con éxito!'
+    })
+  }
+
   const onSubmit = async () => {
     const url = await getPermissions()
     const data = () => {
@@ -43,17 +51,24 @@ const Home = ({ navigation }) => {
         }
       )
     }
-    console.log(token)
     await axios.post(BASE_URL + 'alerts', data(), { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
         if (response.status === 201) {
+          showToastOK()
           console.log(response)
         }
       })
       .catch(function (error) {
         console.log(error)
       })
+  }
+
+  const ReachNotificaionToastOK = () => {
+    Toast.show({
+      type: 'success',
+      text1: '¡Tu alerta fue enviada con éxito!'
+    })
   }
 
   const handlereachgodalert = async () => {
@@ -66,12 +81,12 @@ const Home = ({ navigation }) => {
         }
       )
     }
-    console.log(token)
     await axios.post(BASE_URL + 'alerts', data(), { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
         if (response.status === 201) {
           console.log(response)
+          ReachNotificaionToastOK()
         }
       })
       .catch(function (error) {
