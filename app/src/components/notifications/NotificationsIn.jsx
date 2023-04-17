@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import axios from 'axios'
 import { BASE_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -51,10 +51,10 @@ function NotificationsIn () {
                       <Ionicons name='call' size={21} color='#C83D3D' />
                       <Text className='ml-1'>Llamar al 911</Text>
                     </View>
-                    <View className='flex-row'>
+                    <TouchableOpacity onPress={() => { console.log(item.ubication) }} className='flex-row'>
                       <Ionicons name='map' size={21} color='#4994C2' />
                       <Text className='ml-1'>Ver ubicación</Text>
-                    </View>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>

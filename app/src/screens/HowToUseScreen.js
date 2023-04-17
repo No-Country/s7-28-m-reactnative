@@ -1,21 +1,25 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import * as React from 'react'
+import { View } from 'react-native'
+// import { SafeAreaView } from 'react-native-safe-area-context'
+import { Video } from 'expo-av'
 
 const HowToUseScreen = () => {
+  const video = React.useRef(null)
+  const [status, setStatus] = React.useState({})
+
   return (
-    <SafeAreaView>
-      {/* Header */}
-      <View className='flex flex-row justify-center mt-5 mb-5 '>
-        <Image
-          source={require('../../assets/logo.png')}
-          className='w-50 p-4'
-        />
-      </View>
-      <View>
-        <Text>HowToUseScreen</Text>
-      </View>
-    </SafeAreaView>
+    <View className='flex-auto'>
+      <Video
+        ref={video}
+        source={require('../../images/video.mp4')}
+        controls
+        useNativeControls
+        resizeMode='contain'
+        isLooping
+        onPlaybackStatusUpdate={setStatus}
+        className='flex-auto'
+      />
+    </View>
   )
 }
 
