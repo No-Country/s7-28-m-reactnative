@@ -1,8 +1,11 @@
 import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import axios from 'axios'
+import { BASE_URL } from '@env'
+import { useFocusEffect } from '@react-navigation/native'
 
 const ProfileScreen = ({ navigation }) => {
   const [allDataUser, setAllDataUser] = useState('')
@@ -18,18 +21,32 @@ const ProfileScreen = ({ navigation }) => {
       })
   }
 
-  useEffect(() => {
-    const handleGetInfo = async () => {
-      const dataUser = await AsyncStorage.getItem('dataUser')
-      if (dataUser) {
-        setAllDataUser(JSON.parse(dataUser))
-      } else {
-        console.log('No se encontró el user')
-      }
-    }
+  useFocusEffect(
+    React.useCallback(() => {
+      const handleGetToken = async () => {
+        const dataToken = await AsyncStorage.getItem('AccessToken')
+        if (dataToken) {
+          const config = {
+            headers: { Authorization: `Bearer ${dataToken}` }
+          }
 
-    handleGetInfo()
-  }, [])
+          axios.get(BASE_URL + 'users', config)
+            .then(function (response) {
+              if (response.status === 200) {
+                setAllDataUser(response.data)
+              }
+            })
+            .catch(function (error) {
+              console.log(error.response.data)
+            })
+        } else {
+          console.log('No existe el token')
+        }
+      }
+
+      handleGetToken()
+    }, [])
+  )
 
   return (
     <SafeAreaView>
@@ -47,7 +64,7 @@ const ProfileScreen = ({ navigation }) => {
             <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={handleRemoveToken}>Entendido</Text></TouchableOpacity>
           </View>
         </View>
-      </View>}
+                </View>}
 
       {/* Header */}
 

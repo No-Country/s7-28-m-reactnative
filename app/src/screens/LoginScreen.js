@@ -28,11 +28,9 @@ const Login = ({ navigation }) => {
       password: data.password
     })
       .then(function (response) {
-        console.log(response)
         if (response.status === 201) {
           console.log(response.data)
           AsyncStorage.setItem('AccessToken', response.data.token)
-          AsyncStorage.setItem('dataUser', JSON.stringify(response.data.user))
           navigation.navigate('bottom')
           showToast()
         }

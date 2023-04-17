@@ -10,16 +10,15 @@ import Toast from 'react-native-toast-message'
 
 const PersonalInfoScreen = ({ navigation, route }) => {
   const [token, setToken] = useState('')
-  const [InputEmail, SetInputEmail] = useState(false)
-  const [InputTelefono, SetInputTelefono] = useState(false)
-  const [InputContraseña, SetInputContraseña] = useState(false)
+  const [InputName, SetInputName] = useState('')
+  const [InputTelefono, SetInputTelefono] = useState('')
+  const [InputContraseña, SetInputContraseña] = useState('')
   const [image, setImage] = useState(null)
 
   const formData = {
-    email: InputEmail || route.params.email,
+    username: InputName || route?.params?.profileImge.url,
     phoneNumber: InputTelefono || route.params.phoneNumber,
-    password: InputContraseña || route.params.password,
-    profileImage: image || route.params.profileImage
+    password: InputContraseña || route.params.password
   }
 
   useEffect(() => {
@@ -67,10 +66,11 @@ const PersonalInfoScreen = ({ navigation, route }) => {
       headers: { Authorization: `Bearer ${token}` }
     }
 
-    axios.put(BASE_URL + 'users', formData, config)
+    axios.patch(BASE_URL + 'users', formData, config)
       .then(function (response) {
         if (response.status === 200) {
           showToastOK()
+          navigation.navigate('Perfil', { image })
         }
       })
       .catch(function (error) {
@@ -122,10 +122,10 @@ const PersonalInfoScreen = ({ navigation, route }) => {
       <View className='gap-3 mt-5 px-5'>
         <View className='flex flex-row justify-between w-full px-2 border-b py-2 border-appgray'>
           <View className='flex flex-row gap-5'>
-            <Text className='text-lg font-semibold'>Email</Text>
-            {InputEmail ? <TextInput className='w-3/5' placeholder='Nuevo Email' /> : <Text className='text-lg font-light'>{route.params.email}</Text>}
+            <Text className='text-lg font-semibold'>Nombre</Text>
+            {InputName ? <TextInput onChangeText={(text) => SetInputName(text)} className='w-3/5' placeholder='Nuevo Nombre' /> : <Text className='text-lg font-light'>{route.params.username}</Text>}
           </View>
-          <TouchableOpacity onPress={() => SetInputEmail(prev => !prev)}>
+          <TouchableOpacity onPress={() => SetInputName(prev => !prev)}>
             <Ionicons
               name='pencil-outline'
               size={20}
@@ -136,7 +136,7 @@ const PersonalInfoScreen = ({ navigation, route }) => {
         <View className='flex flex-row justify-between w-full px-2 border-b py-2 border-appgray'>
           <View className='flex flex-row gap-5'>
             <Text className='text-lg font-semibold'>Telefono</Text>
-            {InputTelefono ? <TextInput className='w-3/5' placeholder='Nuevo Telefono' /> : <Text className='text-lg font-light'>{route.params.phoneNumber}</Text>}
+            {InputTelefono ? <TextInput onChangeText={(text) => SetInputTelefono(text)} className='w-3/5' placeholder='Nuevo Telefono' /> : <Text className='text-lg font-light'>{route.params.phoneNumber}</Text>}
           </View>
           <TouchableOpacity onPress={() => SetInputTelefono(prev => !prev)}>
             <Ionicons
@@ -147,7 +147,7 @@ const PersonalInfoScreen = ({ navigation, route }) => {
           </TouchableOpacity>
         </View>
         <View className='flex flex-row justify-between px-2 w-full border-b py-2 border-appgray'>
-          {InputContraseña ? <TextInput placeholder='Nueva Contraseña' className='w-5/6' /> : <Text className='text-lg font-semibold'>Cambiar Contraseña</Text>}
+          {InputContraseña ? <TextInput onChangeText={(text) => SetInputContraseña(text)} placeholder='Nueva Contraseña' className='w-5/6' /> : <Text className='text-lg font-semibold'>Cambiar Contraseña</Text>}
           <TouchableOpacity onPress={() => SetInputContraseña(prev => !prev)}>
             <Ionicons
               name='pencil-outline'
