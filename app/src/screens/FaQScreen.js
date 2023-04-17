@@ -27,11 +27,8 @@ const info = [
 
 const FaQScreen = ({ navigation }) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView className='bg-appbluelight'>
       <ScrollView>
-        <View className='w-full flex items-center h-16 justify-center'>
-          <Text className='w-full text-lg text-center'>Preguntas Frecuentes</Text>
-        </View>
         <View className='bg-appbluelight w-full pb-20 flex items-center'>
           <Image source={require('../../images/CharacterFaQ.png')} className='z-50' />
         </View>

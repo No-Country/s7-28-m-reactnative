@@ -51,14 +51,19 @@ const StackNavigation = () => {
           name='HowToUse'
           component={HowToUseScreen}
           options={{
-            headerShown: false
+            headerStyle: {
+              backgroundColor: '#CEE4F2'
+            },
+            title: '',
+            headerShown: true
           }}
         />
         <Stack.Screen
           name='FaqScreen'
           component={FaqScreen}
           options={{
-            headerShown: false
+            headerShown: true,
+            title: 'Preguntas Frecuentes'
           }}
         />
         <Stack.Screen

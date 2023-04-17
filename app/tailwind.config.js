@@ -14,7 +14,8 @@ module.exports = {
       appbackground: '#F5F5F5',
       appgreen: '#72B040',
       appwhite: '#FEFFFF',
-      appblack: '#212121'
+      appblack: '#212121',
+      appvideo: '#CEE4F2'
     }
   },
   plugins: []

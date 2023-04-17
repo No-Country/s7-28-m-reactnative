@@ -54,7 +54,7 @@ const Home = ({ navigation }) => {
     await axios.post(BASE_URL + 'alerts', data(), { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
-        if (response.status === 201) {
+        if (response.status === 200) {
           showToastOK()
           console.log(response)
         }
@@ -84,9 +84,9 @@ const Home = ({ navigation }) => {
     await axios.post(BASE_URL + 'alerts', data(), { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
-        if (response.status === 201) {
-          console.log(response)
+        if (response.status === 200) {
           ReachNotificaionToastOK()
+          console.log(response)
         }
       })
       .catch(function (error) {
