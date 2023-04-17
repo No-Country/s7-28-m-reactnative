@@ -273,7 +273,7 @@ router.post('/login', loginController)
 /**
  * @openapi
  * /users:
- *   put:
+ *   patch:
  *     tags:
  *       - Users
  *     parameters:
