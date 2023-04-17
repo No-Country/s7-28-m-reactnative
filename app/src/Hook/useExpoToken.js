@@ -41,7 +41,7 @@ const useExpoToken = () => {
         }
       )
     }
-    await axios.put(BASE_URL + 'users', data(), { headers: { authorization: 'Bearer ' + token } })
+    await axios.patch(BASE_URL + 'users', data(), { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
         if (response.status === 201) {
