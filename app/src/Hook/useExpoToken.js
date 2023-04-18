@@ -21,7 +21,6 @@ const useExpoToken = () => {
     await AsyncStorage.getItem('ExpoToken')
       .then(function (response) {
         setExpoToken(response)
-        console.log({ response })
         handlePushExpoToken()
       })
       .catch(function (error) {

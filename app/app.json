@@ -4,10 +4,10 @@
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/alertIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,9 +19,9 @@
     },
     "android": {
       "adaptiveIcon": {
-
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.alwaysalert.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,7 +30,6 @@
       [
         "expo-notifications",
         {
-
           "color": "#ffffff",
           "sounds": [
             "./local/path/to/mySound.wav",
@@ -39,6 +38,11 @@
           "mode": "production"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c5e79ba3-1103-4a6b-ad73-1b5c75f3aeff"
+      }
+    }
   }
 }

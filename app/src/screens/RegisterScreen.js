@@ -19,7 +19,6 @@ const Register = ({ navigation }) => {
       password: data.password
     })
       .then(function (response) {
-        console.log(response)
         navigation.navigate('registersuccess')
       })
       .catch(function (error) {

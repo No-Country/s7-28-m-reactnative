@@ -10,6 +10,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState } from 'react'
 
 const Login = ({ navigation }) => {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [isSecure, setIsSecure] = useState(true)
   const { control, handleSubmit, formState: { errors } } = useForm()
   console.log(errors)
@@ -23,13 +25,13 @@ const Login = ({ navigation }) => {
   }
 
   const onSubmit = async (data) => {
+    setIsLoading(true)
     await axios.post(BASE_URL + 'users/login', {
       email: data.email,
       password: data.password
     })
       .then(function (response) {
         if (response.status === 201) {
-          console.log(response.data)
           AsyncStorage.setItem('AccessToken', response.data.token)
           navigation.navigate('bottom')
           showToast()
@@ -37,15 +39,15 @@ const Login = ({ navigation }) => {
       })
       .catch(function (error) {
         console.log(error.response.data)
-      })
+      }).finally(() => { setIsLoading(false) })
   }
 
   return (
     <SafeAreaView className='bg-appwhite '>
-      <View className='flex flex-row justify-center mb-3 mt-5'>
+      <View className='flex flex-row items-center justify-center mb-3 mt-20'>
         <Image
           source={require('../../assets/logo.png')}
-          className='w-50 p-4 mb-6'
+          className='w-50 p-4 mb-10'
         />
       </View>
       <View className='bg-appdarkgrey rounded-3xl'>
@@ -74,20 +76,13 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <Text className='text-center mt-4 mb-3'>¿Olvidaste tu contraseña?</Text>
-        <TouchableOpacity onPress={handleSubmit(onSubmit)} className='bg-appblue mx-4 mt-4 mb-4 p-4 rounded-md justify-center items-center'>
-          <Text className='text-xl font-base  text-appwhite'> Inciar sesión </Text>
+        <TouchableOpacity disabled={isLoading} onPress={handleSubmit(onSubmit)} className='bg-appblue mx-4 mt-4 mb-4 p-4 rounded-md justify-center items-center'>
+          <Text className='text-xl font-base  text-appwhite '> {isLoading ? 'Cargando...' : 'Iniciar Sesión'} </Text>
         </TouchableOpacity>
       </View>
       <View className='mt-5'>
-        <TouchableOpacity onPress={() => { Alert.alert('inicio de sesión!') }} className='bg-appdarkgrey mx-4 mt-5 p-4 rounded-md flex-row justify-evenly items-center'>
-          <Ionicons
-            name='logo-google'
-            size={35}
-          />
-          <Text className='text-lg '>Continuar con Google</Text>
-        </TouchableOpacity>
         <Text className='text-center mt-3'>¿No tenes Cuenta?</Text>
-        <TouchableOpacity onPress={() => { navigation.navigate('register') }} className='bg-appred mx-4 mt-5 mb-36 p-4 rounded-md justify-center items-center'>
+        <TouchableOpacity onPress={() => { navigation.navigate('register') }} className='bg-appred mx-4 mt-10 mb-44 p-4 rounded-md justify-center items-center'>
           <Text className='text-xl font-base text-appwhite'>Regístrarte</Text>
         </TouchableOpacity>
       </View>

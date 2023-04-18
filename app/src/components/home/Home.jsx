@@ -47,7 +47,7 @@ const Home = ({ navigation }) => {
       return (
         {
           ubication: url,
-          reason: 'Ayuda Estoy en peligro!'
+          reason: 'Esta en peligro!'
         }
       )
     }

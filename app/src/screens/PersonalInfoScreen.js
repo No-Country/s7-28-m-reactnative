@@ -84,7 +84,6 @@ const PersonalInfoScreen = ({ navigation, route }) => {
   }
 
   const updateUserProfile = () => {
-    console.log(InputContraseña)
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
