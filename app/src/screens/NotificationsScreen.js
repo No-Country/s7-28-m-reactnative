@@ -1,21 +1,15 @@
-import { View, Text, Image } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+
+import Notification from '../components/notifications/Notification'
 
 const NotificationsScreen = () => {
   return (
-    <SafeAreaView>
-      {/* Header */}
-      <View className='flex flex-row justify-center mt-5'>
-        <Image
-          source={require('../../assets/logo.png')}
-          className='w-50 p-4'
-        />
-      </View>
-      <View>
-        <Text>NotificationsScreen</Text>
-      </View>
-    </SafeAreaView>
+    <View>
+      <ScrollView>
+        <Notification />
+      </ScrollView>
+    </View>
   )
 }
 

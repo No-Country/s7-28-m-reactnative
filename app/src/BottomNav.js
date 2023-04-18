@@ -4,11 +4,12 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 
 // screens
 
-import HomeScreen from './screens/HomeScreen'
+// import HomeScreen from './screens/HomeScreen'
+import Home from './components/home/Home'
 import ContactsScreen from './screens/ContactsScreen'
-import HowToUseScreen from './screens/HowToUseScreen'
 import ProfileScreen from './screens/ProfileScreen'
-import PersonalInfoScreen from './screens/PersonalInfoScreen'
+import NotificationsScreen from './screens/NotificationsScreen'
+
 
 const Tab = createBottomTabNavigator()
 
@@ -26,7 +27,7 @@ function MyTabs ({ navigation }) {
     >
       <Tab.Group>
         <Tab.Screen
-          name='Inicio' component={HomeScreen} options={{
+          name='Inicio' component={Home} options={{
             headerShown: false,
             tabBarIcon: ({ color, size }) => {
               return (
@@ -55,12 +56,12 @@ function MyTabs ({ navigation }) {
           }}
         />
         <Tab.Screen
-          name='Como lo uso' component={HowToUseScreen} options={{
+          name='Notificaciones' component={NotificationsScreen} options={{
             headerShown: false,
             tabBarIcon: ({ color, size }) => {
               return (
                 <Ionicons
-                  name='help-circle-outline'
+                  name='notifications'
                   size={30}
                   color={color}
                 />

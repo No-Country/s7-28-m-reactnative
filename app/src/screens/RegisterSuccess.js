@@ -16,7 +16,7 @@ const RegisterSuccess = ({ navigation }) => {
           <Text className='text-center m-5 font-bold text-lg'>¡Registró exitoso!</Text>
           <View className='flex-row justify-center'>
             <Image
-              source={require('../../assets/amico.png')}
+              source={require('../../images/registersuccesspic.png')}
               className='mt-10 mb-10'
             />
           </View>
