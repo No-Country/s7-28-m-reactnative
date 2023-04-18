@@ -5,6 +5,7 @@ import { BASE_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function NotificationsOut () {
+  const [isLoading, setIsLoading] = React.useState(false)
   const [info, setInfo] = React.useState([])
 
   const handleGetToken = async () => {
@@ -22,6 +23,7 @@ function NotificationsOut () {
   }, [])
 
   const senAlert = async (token) => {
+    setIsLoading(true)
     await axios.get(BASE_URL + 'alerts/user/sendalerts', { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
@@ -31,9 +33,16 @@ function NotificationsOut () {
       })
       .catch(function (error) {
         console.log(error)
-      })
+      }).finally(() => { setIsLoading(false) })
   }
 
+  if (isLoading) {
+    return (
+      <View className='items-center justify-center mt-60'>
+        <Text className='text-lg'>Cargando...</Text>
+      </View>
+    )
+  }
   return (
     <View className='flex  w-full h-auto px-5 py-2'>
       {info.map((item, i) => {
