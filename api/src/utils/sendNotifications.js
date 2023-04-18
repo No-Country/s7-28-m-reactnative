@@ -15,7 +15,7 @@ const verifyTokensContacts = (user, alert) => {
       title: alert.reason,
       to: pushToken.expoToken,
       sound: 'default',
-      body: `${alert.reason} \n ${user.email}`,
+      body: `${user.username} ${alert.reason} \n ${user.email}`,
       data: { },
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Z_tqfzLM_nmBZ3eOxjav9nAB4P50v3ucuaEiAURE1g&s'
     })
@@ -24,18 +24,20 @@ const verifyTokensContacts = (user, alert) => {
 }
 
 const sendNotification = async (messages) => {
-  const chunks = expo.chunkPushNotifications(messages)
-  const tickets = []
+  messages.forEach(async (message) => {
+    const chunks = expo.chunkPushNotifications([message])
+    const tickets = []
 
-  for (const chunk of chunks) {
-    try {
-      const ticketChunk = await expo.sendPushNotificationsAsync(chunk)
-      console.log(ticketChunk)
-      tickets.push(...ticketChunk)
-    } catch (error) {
-      console.error(error)
+    for (const chunk of chunks) {
+      try {
+        const ticketChunk = await expo.sendPushNotificationsAsync(chunk)
+        console.log(ticketChunk)
+        tickets.push(...ticketChunk)
+      } catch (error) {
+        console.error(error)
+      }
     }
-  }
+  })
 }
 
 module.exports = { verifyTokensContacts }
