@@ -9,7 +9,7 @@ export default function AuthorCard ({ author }) {
         alt=''
         className='rounded-full'
       />
-      <h4 className='font-bold text-xl max-w-[160px] text-center'>{author.name}</h4>
+      <h4 className='font-bold text-xl text-center'>{author.name}</h4>
       <p>{author.function}</p>
       <div className='flex gap-2'>
         <a href={author.linkedin} className='ease-in-out duration-300 opacity-75 hover:scale-110 hover:opacity-100'>
