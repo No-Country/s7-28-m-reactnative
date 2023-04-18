@@ -10,6 +10,7 @@ import ContactsScreen from './screens/ContactsScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import NotificationsScreen from './screens/NotificationsScreen'
 
+
 const Tab = createBottomTabNavigator()
 
 function MyTabs ({ navigation }) {

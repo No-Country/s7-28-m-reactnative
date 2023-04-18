@@ -42,6 +42,7 @@ const FaQScreen = ({ navigation }) => {
           />
         </View>
       </ScrollView>
+
     </SafeAreaView>
   )
 }
