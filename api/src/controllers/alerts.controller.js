@@ -11,7 +11,6 @@ const getAllAlertsController = async (req, res) => {
 }
 
 const getUserSendAlertController = async (req, res) => {
-  console.log(req.user)
   const email = req.user
 
   try {
