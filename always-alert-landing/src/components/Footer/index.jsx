@@ -3,7 +3,7 @@ import DonwloadButton from '../DownloadButton'
 export default function Footer () {
   return (
     <footer className='h-full bg-[#212121] flex flex-col gap-10 items-center py-10 relative'>
-      <div className='flex flex-col gap-8 sm:gap-20 items-center w-full max-w-6xl'>
+      <div data-aos='fade-up' className='flex flex-col gap-8 pt-8 sm:pt-20 sm:gap-20 items-center w-full max-w-6xl'>
         <h2 className='text-white text-3xl sm:text-5xl text-center'>
           ¿Listo para ser parte de Always Alert?
         </h2>
