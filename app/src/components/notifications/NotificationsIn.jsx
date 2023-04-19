@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, Linking } from 'react-native'
 import axios from 'axios'
 import { BASE_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import EmptyNotifications from './EmptyNotifications'
 
 function NotificationsIn () {
   const [isLoading, setIsLoading] = React.useState(false)
@@ -50,7 +51,9 @@ function NotificationsIn () {
       </View>
     )
   }
-
+  if (!info.length) {
+    return (<EmptyNotifications />)
+  }
   return (
     <View className='flex  w-full h-auto px-5 py-2'>
       {info.map((item, i) => {

@@ -77,7 +77,7 @@ const Home = ({ navigation }) => {
       return (
         {
           ubication: url,
-          reason: 'Llegue bien!'
+          reason: 'Llego bien!'
         }
       )
     }

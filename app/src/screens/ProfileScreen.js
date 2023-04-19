@@ -12,9 +12,14 @@ const ProfileScreen = ({ navigation }) => {
   const [Modal, SetModal] = useState(false)
 
   const handleRemoveToken = async () => {
-    await AsyncStorage.removeItem('AccessToken')
+    await AsyncStorage.getItem('AccessToken')
       .then(function (response) {
-        navigation.navigate('login')
+        axios.patch(BASE_URL + 'users', { expoToken: '' }, { headers: { authorization: 'Bearer ' + response } })
+          .then(() => {
+            AsyncStorage.removeItem('AccessToken')
+            navigation.navigate('login')
+          }
+          )
       })
       .catch(function (error) {
         console.log(error)
@@ -64,7 +69,7 @@ const ProfileScreen = ({ navigation }) => {
             <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={handleRemoveToken}>Entendido</Text></TouchableOpacity>
           </View>
         </View>
-                </View>}
+      </View>}
 
       {/* Header */}
 
