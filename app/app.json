@@ -31,10 +31,7 @@
         "expo-notifications",
         {
           "color": "#ffffff",
-          "sounds": [
-            "./local/path/to/mySound.wav",
-            "./local/path/to/myOtherSound.wav"
-          ],
+          
           "mode": "production"
         }
       ]
