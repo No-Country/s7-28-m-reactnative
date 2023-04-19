@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import axios from 'axios'
 import { BASE_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import EmptyNotifications from './EmptyNotifications'
 
 function NotificationsOut () {
   const [isLoading, setIsLoading] = React.useState(false)
@@ -42,6 +43,9 @@ function NotificationsOut () {
         <Text className='text-lg'>Cargando...</Text>
       </View>
     )
+  }
+  if (!info.length) {
+    return (<EmptyNotifications />)
   }
   return (
     <View className='flex  w-full h-auto px-5 py-2'>

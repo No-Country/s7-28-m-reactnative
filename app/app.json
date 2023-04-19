@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "AlwaysAlert",
+    "slug": "alwaysalert",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/alertIcon.png",
@@ -31,17 +31,13 @@
         "expo-notifications",
         {
           "color": "#ffffff",
-          "sounds": [
-            "./local/path/to/mySound.wav",
-            "./local/path/to/myOtherSound.wav"
-          ],
           "mode": "production"
         }
       ]
     ],
     "extra": {
       "eas": {
-        "projectId": "c5e79ba3-1103-4a6b-ad73-1b5c75f3aeff"
+        "projectId": "2901916c-3aa3-40fb-ba32-046d6aac73d9"
       }
     }
   }
