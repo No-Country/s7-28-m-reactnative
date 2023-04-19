@@ -62,7 +62,7 @@ const ProfileScreen = ({ navigation }) => {
           </View>
           <View className='flex items-center pb-6'>
             <Text className='text-xl font-semibold'>Cerrar Sesion</Text>
-            <Text className='font-light pt-1'>¿De verdad quieres cerrar sesion?</Text>
+            <Text className='font-light pt-1'>Â¿De verdad quieres cerrar sesion?</Text>
           </View>
           <View className='flex flex-row gap-4 w-full justify-end'>
             <TouchableOpacity><Text className='px-2 bg-appwhite rounded-md py-1' onPress={() => SetModal(false)}>Cancelar</Text></TouchableOpacity>
