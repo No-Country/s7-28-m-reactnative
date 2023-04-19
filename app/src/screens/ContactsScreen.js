@@ -154,6 +154,7 @@ const ContactsScreen = () => {
               <View className='flex flex-row px-20'>
                 <View className='w-full'>
                   <TextInput
+                    onSubmitEditing={() => searchContact(text)}
                     className='px-6 py-3 rounded-l-full bg-appbackground'
                     onChangeText={onChangeText}
                     value={text}

@@ -8,20 +8,14 @@ const useExpoToken = () => {
   const [expoToken, setExpoToken] = React.useState('')
 
   const handleGetToken = async () => {
-    await AsyncStorage.getItem('AccessToken')
-      .then(function (response) {
-        setToken(response)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    const token = await AsyncStorage.getItem('AccessToken')
   }
 
   const handleExpoToken = async () => {
     await AsyncStorage.getItem('ExpoToken')
       .then(function (response) {
         setExpoToken(response)
-        handlePushExpoToken()
+        handlePushExpoToken(response)
       })
       .catch(function (error) {
         console.log(error)
@@ -32,15 +26,10 @@ const useExpoToken = () => {
     handleGetToken()
   }, [])
 
-  const handlePushExpoToken = async () => {
-    const data = () => {
-      return (
-        {
-          expoToken
-        }
-      )
-    }
-    await axios.patch(BASE_URL + 'users', data(), { headers: { authorization: 'Bearer ' + token } })
+  const handlePushExpoToken = async (response) => {
+    const data = { expoToken: response }
+    const token = await AsyncStorage.getItem('AccessToken')
+    await axios.patch(BASE_URL + 'users', data, { headers: { authorization: 'Bearer ' + token } })
       .then(function (response) {
         console.log(response)
         if (response.status === 201) {
