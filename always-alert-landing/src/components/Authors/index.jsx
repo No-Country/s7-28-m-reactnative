@@ -28,11 +28,11 @@ const authors = [
     github: 'https://github.com/LautiSantillan'
   },
   {
-    image: '/assets/authors/tomas.jpg',
-    name: 'Tomás Herrera',
+    image: '/assets/authors/raul.jpeg',
+    name: 'Raúl Ereño',
     function: 'Programador Back-End',
-    linkedin: 'https://www.linkedin.com/in/mauro-tomas-herrera',
-    github: 'https://github.com/tomasherrera1910'
+    linkedin: 'https://www.linkedin.com/in/raulereno/',
+    github: 'https://github.com/raulereno'
   },
   {
     image: '/assets/authors/agus.jpg',
@@ -42,12 +42,13 @@ const authors = [
     github: 'https://github.com/agustinlopez23'
   },
   {
-    image: '/assets/authors/raul.jpeg',
-    name: 'Raúl Ereño',
+    image: '/assets/authors/tomas.jpg',
+    name: 'Tomás Herrera',
     function: 'Programador Back-End',
-    linkedin: 'https://www.linkedin.com/in/raulereno/',
-    github: 'https://github.com/raulereno'
+    linkedin: 'https://www.linkedin.com/in/mauro-tomas-herrera',
+    github: 'https://github.com/tomasherrera1910'
   }
+
 ]
 
 export default function Authors () {
