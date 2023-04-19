@@ -27,6 +27,7 @@ export async function registerForPushNotificationsAsync () {
     token = (await Notifications.getExpoPushTokenAsync()).data
     AsyncStorage.setItem('ExpoToken', token)
     AsyncStorage.setItem('dataUser', JSON.stringify(token))
+    console.log(token)
   } else {
     Alert('Must use physical device for Push Notifications')
   }
