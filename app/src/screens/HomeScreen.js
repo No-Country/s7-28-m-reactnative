@@ -5,11 +5,13 @@ import { registerForPushNotificationsAsync } from '../components/home/Notificati
 import useExpoToken from '../Hook/useExpoToken'
 
 const HomeScreen = ({ navigation, onSubmit, handlereachgodalert }) => {
-  const { handleExpoToken } = useExpoToken()
   useEffect(() => {
-    registerForPushNotificationsAsync()
-    handleExpoToken()
+    setExpoToken()
   }, [])
+
+  const setExpoToken = async () => {
+    registerForPushNotificationsAsync().then(res => useExpoToken(res))
+  }
 
   return (
     <SafeAreaView>

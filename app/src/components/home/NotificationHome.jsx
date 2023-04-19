@@ -14,7 +14,8 @@ Notifications.setNotificationHandler({
 export async function registerForPushNotificationsAsync () {
   let token
   if (Device.isDevice) {
-    const { status: existingStatus } = await Notifications.getPermissionsAsync()
+    const { status: existingStatus } =
+      await Notifications.getPermissionsAsync()
     let finalStatus = existingStatus
     if (existingStatus !== 'granted') {
       const { status } = await Notifications.requestPermissionsAsync()
@@ -25,8 +26,8 @@ export async function registerForPushNotificationsAsync () {
       return
     }
     token = (await Notifications.getExpoPushTokenAsync()).data
-    AsyncStorage.setItem('ExpoToken', token)
-    AsyncStorage.setItem('dataUser', JSON.stringify(token))
+    await AsyncStorage.setItem('ExpoToken', token)
+    await AsyncStorage.setItem('dataUser', JSON.stringify(token))
     console.log(token)
   } else {
     Alert('Must use physical device for Push Notifications')

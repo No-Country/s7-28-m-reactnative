@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -9,7 +10,7 @@ import { useFocusEffect } from '@react-navigation/native'
 
 const ProfileScreen = ({ navigation }) => {
   const [allDataUser, setAllDataUser] = useState('')
-  const [Modal, SetModal] = useState(false)
+  const [modal, SetModal] = useState(false)
 
   const handleRemoveToken = async () => {
     await AsyncStorage.getItem('AccessToken')
@@ -55,7 +56,7 @@ const ProfileScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView>
-      {Modal && <View className='w-full z-50 h-screen flex items-center justify-center bg-appblack bg-opacity-20 absolute top-0'>
+      {modal && <View className='w-full z-50 h-screen flex items-center justify-center bg-appblack bg-opacity-20 absolute top-0'>
         <View className=' w-100 p-5 z-50 rounded-3xl mx-5 bg-appgray flex items-center justify-between'>
           <View className='mb-2 '>
             <Image className='rounded-full' source={require('../../images/Character.png')} />
