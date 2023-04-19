@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 
 export default function Header () {
   return (
-    <header className='w-full h-screen flex flex-col items-center bg-[#C9D7E1]'>
+    <header className='w-full min-h-screen h-full pb-10 flex flex-col items-center bg-[#C9D7E1]'>
       <Navbar />
       <section className='max-w-7xl flex flex-col justify-center sm:justify-start md:justify-center h-full'>
         <div className='flex flex-col gap-8 md:gap-0 md:flex-row sm:items-start md:items-center justify-center md:mt-5'>
