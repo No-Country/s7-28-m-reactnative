@@ -19,8 +19,8 @@ export default function Header () {
               alt=''
             />
           </div>
-          <div data-aos='fade-left' className='flex flex-col items-center justify-around gap-4 px-4 sm:px-0 sm:gap-8 lg:gap-12 xl:gap-16'>
-            <h1 className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center sm:max-w-sm md:max-w-md lg:max-w-3xl'>
+          <div className='flex flex-col items-center justify-around gap-4 px-4 sm:px-0 sm:gap-8 lg:gap-12 xl:gap-16'>
+            <h1 data-aos='fade-left' className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center sm:max-w-sm md:max-w-md lg:max-w-3xl'>
               La app que te ayuda a mantener a tus contactos
               <b> informados de tu estado</b>
             </h1>
