@@ -32,6 +32,16 @@ const searchUsers = async (req, res) => {
     handlerHttp(res, (!error ? 'Error cannot get User' : error.message))
   }
 }
+const updateExpoToken = async (req, res) => {
+  try {
+    const expoToken = req.body
+    const updatedUser = await updateProfile(expoToken, req.user)
+    if (updatedUser === 'User not found') { return res.status(400).send('User not found') }
+    res.status(200).send(updatedUser)
+  } catch (error) {
+    handlerHttp(res, 'Error update user')
+  }
+}
 
 const updateUser = async (req, res) => {
   try {
@@ -71,4 +81,4 @@ const deleteUser = async (req, res) => {
     handlerHttp(res, (!error ? 'Error delete user' : error.message))
   }
 }
-module.exports = { getUser, getUsers, updateUser, deleteUser, updateUserProfileImage, searchUsers }
+module.exports = { getUser, getUsers, updateUser, deleteUser, updateUserProfileImage, searchUsers, updateExpoToken }

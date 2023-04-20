@@ -14,7 +14,8 @@ const {
   updateUser,
   deleteUser,
   updateUserProfileImage,
-  searchUsers
+  searchUsers,
+  updateExpoToken
 } = require('../controllers/user.controller')
 const { checkJwt } = require('../middlewares/authValidateSession')
 const fileUpload = require('express-fileupload')
@@ -299,6 +300,8 @@ router.post('/login', loginController)
  *                   items:
  *                     type: object
  */
+
+router.post('/updateExpoToken', checkJwt, updateExpoToken)
 router.patch('/', checkJwt, updateUser)
 /**
  * @openapi
