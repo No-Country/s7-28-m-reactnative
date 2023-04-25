@@ -55,6 +55,69 @@ Always Alert es una aplicación móvil imprescindible para aquellos que valoran 
 
 ## 👷 Miembros del equipo
 
+## UX/UI
+<table>
+  <tr>
+    <td>
+      <div align="center">
+        <img width="110" src="./app/assets/README/devsPhotos/crismar.jpg"/>
+        <h4 style="margin-top: 1rem;">Crismar Silva</h4>
+      </div>
+      <div align="center">
+        <a href="https://www.linkedin.com/in/crismar-silva" target="_blank" rel="author">
+          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
+        </a>
+      </div>
+    </td>
+     <td>
+      <div align="center">
+        <img width="110" src="./app/assets/README/devsPhotos/malena.jpg"/>
+        <h4 style="margin-top: 1rem;">Malena Hernández</h4>
+      </div>
+      <div align="center">
+        <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
+          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
+        </a>
+      </div>
+    </td>
+  </tr>
+</table>
+
+## Frontend
+<table>
+  <tr>
+    <td>
+      <div align="center">
+        <img width="110" src="./app/assets/README/devsPhotos/martin.jpg"/>
+        <h4 style="margin-top: 1rem;">Martin Maruca</h4>
+      </div>
+      <div align="center">
+        <a href="https://www.linkedin.com/in/martin-maruca/" target="_blank" rel="author">
+          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
+        </a>
+        <a href="https://github.com/martinmaruca" target="_blank" rel="author">
+          <img height='30' src="https://cdn.svgporn.com/logos/github-icon.svg" style="margin-left:10px;"/>
+        </a>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img width="110" src="./app/assets/README/devsPhotos/lautaro.jpg"/>
+        <h4 style="margin-top: 1rem;">Lautaro Santillan</h4>
+      </div>
+      <div align="center">
+        <a href="https://www.linkedin.com/in/lauti-santillan" target="_blank" rel="author">
+          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
+        </a>
+        <a href="https://github.com/LautiSantillan" target="_blank" rel="author">
+          <img height='30' src="https://cdn.svgporn.com/logos/github-icon.svg" style="margin-left:10px;"/>
+        </a>
+      </div>
+    </td>
+  </tr>
+</table>
+
+## Backend
 <table>
   <tr>
     <td>
@@ -87,47 +150,6 @@ Always Alert es una aplicación móvil imprescindible para aquellos que valoran 
     </td>
     <td>
       <div align="center">
-        <img width="110" src="./app/assets/README/devsPhotos/martin.jpg"/>
-        <h4 style="margin-top: 1rem;">Martin Maruca</h4>
-      </div>
-      <div align="center">
-        <a href="https://www.linkedin.com/in/martin-maruca/" target="_blank" rel="author">
-          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
-        </a>
-        <a href="https://github.com/martinmaruca" target="_blank" rel="author">
-          <img height='30' src="https://cdn.svgporn.com/logos/github-icon.svg" style="margin-left:10px;"/>
-        </a>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div align="center">
-        <img width="110" src="./app/assets/README/devsPhotos/crismar.jpg"/>
-        <h4 style="margin-top: 1rem;">Crismar Silva</h4>
-      </div>
-      <div align="center">
-        <a href="https://www.linkedin.com/in/crismar-silva" target="_blank" rel="author">
-          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
-        </a>
-      </div>
-    </td>
-    <td>
-      <div align="center">
-        <img width="110" src="./app/assets/README/devsPhotos/lautaro.jpg"/>
-        <h4 style="margin-top: 1rem;">Lautaro Santillan</h4>
-      </div>
-      <div align="center">
-        <a href="https://www.linkedin.com/in/lauti-santillan" target="_blank" rel="author">
-          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
-        </a>
-        <a href="https://github.com/LautiSantillan" target="_blank" rel="author">
-          <img height='30' src="https://cdn.svgporn.com/logos/github-icon.svg" style="margin-left:10px;"/>
-        </a>
-      </div>
-    </td>
-    <td>
-      <div align="center">
         <img width="110" src="./app/assets/README/devsPhotos/raul.jpg"/>
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
       </div>
@@ -137,19 +159,6 @@ Always Alert es una aplicación móvil imprescindible para aquellos que valoran 
         </a>
         <a href="https://github.com/raulereno" target="_blank" rel="author">
           <img height='30' src="https://cdn.svgporn.com/logos/github-icon.svg" style="margin-left:10px;"/>
-        </a>
-      </div>
-    </td>
-  </tr>
-  <tr>
-     <td>
-      <div align="center">
-        <img width="110" src="./app/assets/README/devsPhotos/malena.jpg"/>
-        <h4 style="margin-top: 1rem;">Malena Hernández</h4>
-      </div>
-      <div align="center">
-        <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
-          <img height='30' src="https://cdn.svgporn.com/logos/linkedin-icon.svg"/>
         </a>
       </div>
     </td>
