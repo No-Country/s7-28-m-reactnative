@@ -1,12 +1,14 @@
  <div align="center">
-  <img src="./app/assets/README/AlwaysAlert-logo.jpg"/>
+  <img width='250' src="./app/assets/README/AlwaysAlert-logo.png"/>
 </div>
 
-## 📕 Descripción del proyecto
+# ALWAYS ALERT
 
-Proyecto Mobile Boton Antipanico
+Always Alert es una aplicación móvil imprescindible para aquellos que valoran su seguridad personal en cualquier situación. Esta app ha sido diseñada para proporcionar una forma rápida y precisa de enviar alertas a tus contactos de confianza en caso de emergencia. Ya sea que estés caminando solo en la noche o enfrentando una situación de peligro, Always Alert te brinda la tranquilidad de saber que alguien estará al tanto de tu ubicación y situación.
 
-API URL:https://alwaysalert.onrender.com/
+Con Always Alert, también puedes establecer una lista de contactos de emergencia y actualizarla en cualquier momento. La aplicación es fácil de usar y cuenta con una interfaz intuitiva que te permite activar la alerta con rapidez y facilidad.
+
+## Vistas
 
 ## 👷 Miembros del equipo
 
