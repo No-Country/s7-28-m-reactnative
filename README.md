@@ -1,6 +1,5 @@
-<div align="center">
-  <h1>🤖 Proyecto | No Country 💻</h1>
-  
+ <div align="center">
+  <img src="./app/assets/README/AlwaysAlert-logo.jpg"/>
 </div>
 
 ## 📕 Descripción del proyecto
@@ -16,7 +15,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/marceloagustinlopezramallo/" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/agustin.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/agustin.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">M. Agustin Lopez Ramallo</h4>
       </div>
@@ -24,7 +23,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/mauro-tomas-herrera" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/tomas.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/tomas.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Mauro Tomas Herrera</h4>
       </div>
@@ -32,7 +31,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/martin-maruca/" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/martin.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/martin.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Martin Maruca</h4>
       </div>
@@ -42,7 +41,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/crismar-silva" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/crismar.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/crismar.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Crismar Silva</h4>
       </div>
@@ -50,7 +49,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/lauti-santillan" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/lautaro.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/lautaro.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Lautaro Santillan</h4>
       </div>
@@ -58,7 +57,7 @@ API URL:https://alwaysalert.onrender.com/
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/raulereno" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/raul.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/raul.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Raul Ereno</h4>
       </div>
@@ -68,7 +67,7 @@ API URL:https://alwaysalert.onrender.com/
      <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/malena-hern%C3%A1ndez-b36057188/" target="_blank" rel="author">
-          <img width="110" src="./app/assets/devsPhotos/malena.jpg"/>
+          <img width="110" src="./app/assets/README/devsPhotos/malena.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Malena Hernández</h4>
       </div>
